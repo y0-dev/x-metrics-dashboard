@@ -521,7 +521,7 @@ const authUrl =
     `&redirect_uri=${encodeURIComponent(redirect_uri)}` +
     `&scope=user.info.basic,user.info.stats` +
 	'&state=' + csrfState;
-const tokenUrl = `https://open.tiktokapis.com/v2/oauth/token`;
+const tokenUrl = `https://open.tiktokapis.com/v2/oauth/token/`;
 
         const queryObject = new URLSearchParams(document.location.search);
         const code = queryObject.get("code");
