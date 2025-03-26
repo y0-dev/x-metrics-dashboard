@@ -547,7 +547,7 @@ const tokenUrl = `https://open.tiktokapis.com/v2/oauth/token/`;
             console.log(`Access Token: ${data.access_token}`);
             console.log(`Expires In: ${data.expires_in}`);
         } else {
-            console.error('No access token received.');
+            console.error('No access token received:'+data.error_description);
         }
 		
 		});}
