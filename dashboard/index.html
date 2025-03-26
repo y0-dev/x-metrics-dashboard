@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Twitter/X Analytics Dashboard</title>
+  <title>X Metrics Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -242,7 +242,7 @@
 <body>
   <div class="dashboard-header">
     <div>
-      <h1>Twitter/X Analytics</h1>
+      <h1>X Metrics Dashboard</h1>
       <div class="last-updated" id="lastUpdated">
         <i data-lucide="clock" class="icon"></i>
         Last updated: Loading...
@@ -256,6 +256,18 @@
   </div>
 
   <div class="social-container">
+	<a href="#" onclick="Auth()" rel="noopener" class="social-link">
+      <i data-lucide="key" class="icon"></i>
+      Authorise
+    </a>
+	<a href="privacy.html" rel="noopener" class="social-link">
+      <i data-lucide="globe-lock" class="icon"></i>
+      Privacy Policy
+    </a>
+	<a href="tos.html" rel="noopener" class="social-link">
+      <i data-lucide="receipt-text" class="icon"></i>
+      Terms of Service
+    </a>
   </div>
 
   <div class="stats-container">
@@ -489,6 +501,66 @@
       const icon = value >= 0 ? 'trending-up' : 'trending-down';
       return `<i data-lucide="${icon}" class="icon"></i>${value >= 0 ? '+' : ''}${value.toLocaleString()} since ${period}`;
     };
+	
+	var process = {
+	env: {
+	TIKTOK_CLIENT_ID: "aww60wjqbymqy9ci",
+	TIKTOK_CLIENT_SECRET: "ml1aeMgvqAaBzxtLkgzwcKvNrKcK9Rjh",
+	}
+	};
+	
+const client_id = process.env.TIKTOK_CLIENT_ID;
+const client_secret = process.env.TIKTOK_CLIENT_SECRET;
+const redirect_uri = 'https://y0-dev.github.io/x-metrics-dashboard/';
+
+// TikTok OAuth URLs
+const csrfState = Math.random().toString(36).substring(2);
+const authUrl = 
+    `https://www.tiktok.com/v2/auth/authorize/` +
+    `?response_type=code&client_key=${client_id}` +
+    `&redirect_uri=${encodeURIComponent(redirect_uri)}` +
+    `&scope=user.info.basic` +
+	'&state=' + csrfState;
+const tokenUrl = `https://open.tiktokapis.com/v2/oauth/token`;
+
+        const queryObject = new URLSearchParams(document.location.search);
+        const code = queryObject.get("code");
+		if (code) {
+        
+        // Exchange authorization code for access token
+        const response = fetch(tokenUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({
+                grant_type: 'authorization_code',
+                code: code,
+                redirect_uri: redirect_uri,
+                client_key: client_id,
+                client_secret: client_secret
+            })
+        });
+
+        const data = response.json();
+        
+        res.writeHead(200, { 'Content-Type': 'text/html' });
+        if(data.access_token) {
+            res.end(`Access Token: ${data.access_token}<br>Expires In: ${data.expires_in}`);
+            console.log(`Access Token: ${data.access_token}`);
+            console.log(`Expires In: ${data.expires_in}`);
+        } else {
+            res.end('No access token received.');
+            console.error('No access token received.');
+        }
+        
+        server.close();
+		}
+
+function Auth(){
+	window.location.href = authUrl;
+}
+
   </script>
 </body>
 </html>

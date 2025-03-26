@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #ffffff;
+      --bg-secondary: #f8fafc;
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --accent-color: #0ea5e9;
+      --border-color: #e2e8f0;
+      --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+      --positive: #22c55e;
+      --negative: #ef4444;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --accent-color: #38bdf8;
+      --border-color: #334155;
+      --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dashboard-header {
+      width: 95%;
+      max-width: 1200px;
+      margin: 0 auto 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .theme-toggle {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      padding: 8px 16px;
+      border-radius: 8px;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .last-updated {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 95%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .current-stats {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border-color);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .current-stats:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px -1px rgb(0 0 0 / 0.15);
+    }
+
+    .stat-title {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var (--accent-color);
+    }
+
+    .change {
+      font-size: 0.9rem;
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: var(--bg-primary);
+      display: inline-block;
+      margin: 4px 0;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .positive-change {
+      color: var(--positive);
+    }
+
+    .negative-change {
+      color: var(--negative);
+    }
+
+    .chart-section {
+      width: 95%;
+      max-width: 1200px;
+      margin: 30px auto;
+      background: var(--bg-secondary);
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--border-color);
+    }
+
+    .chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      .stat-value {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* Loading animation */
+    .loading {
+      opacity: 0.7;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 0.7; }
+      50% { opacity: 0.4; }
+      100% { opacity: 0.7; }
+    }
+
+    .icon {
+      vertical-align: middle;
+      margin-right: 8px;
+    }
+
+    .social-container {
+      width: 95%;
+      max-width: 1200px;
+      margin: 0 auto 30px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px 20px;
+      color: var(--text-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--card-shadow);
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+
+    .social-link .icon {
+      margin: 0;
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Move footer links to end of page */
+    .footer {
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-header">
+    <div>
+      <h1>Terms of Service</h1>
+    </div>
+    <button class="theme-toggle" id="themeToggle">
+      <i data-lucide="sun" class="icon"></i>
+      <i data-lucide="moon" class="icon" style="display: none;"></i>
+      Toggle Theme
+    </button>
+  </div>
+
+  <div class="chart-section">
+    <div class="chart-header">
+      <h2>
+        <i data-lucide="handshake" class="icon"></i>
+        Acceptance of Terms
+      </h2>
+    </div>
+	By accessing or using X Metrics, you acknowledge that you have read, understood, and agreed to be bound by these Terms, as well as any applicable TikTok Developer API policies. If you do not agree to these Terms, you may not use our Services.
+  </div>
+  
+  <div class="chart-section">
+    <div class="chart-header">
+      <h2>
+        <i data-lucide="webhook" class="icon"></i>
+        Use of TikTok Developer API
+      </h2>
+    </div>
+	Our Services utilize the TikTok Developer API to provide certain functionalities. You agree to comply with TikTok’s API Terms of Service, Community Guidelines, and other applicable policies. We do not control or assume liability for TikTok’s API, including its availability or any changes made by TikTok.
+  </div>
+  
+  <div class="chart-section">
+    <div class="chart-header">
+      <h2>
+        <i data-lucide="hard-drive" class="icon"></i>
+        User Data & Privacy
+      </h2>
+    </div>
+	By using our Services, you agree that we may collect, store, and process data as outlined in our Privacy Policy. We do not sell or misuse user data obtained through the TikTok Developer API. All data handling will adhere to TikTok’s data protection policies.
+  </div>
+
+  <script>
+    // Initialize all icons
+    lucide.createIcons();
+
+    // Theme toggling
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    function setTheme(isDark) {
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      document.querySelector('[data-lucide="sun"]').style.display = isDark ? 'block' : 'none';
+      document.querySelector('[data-lucide="moon"]').style.display = isDark ? 'none' : 'block';
+    }
+
+    // Initialize theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setTheme(savedTheme === 'dark');
+    } else {
+      setTheme(prefersDark.matches);
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      setTheme(!isDark);
+    });
+  </script>
+</body>
+</html>
