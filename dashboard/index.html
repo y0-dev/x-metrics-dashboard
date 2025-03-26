@@ -519,7 +519,7 @@ const authUrl =
     `https://www.tiktok.com/v2/auth/authorize/` +
     `?response_type=code&client_key=${client_id}` +
     `&redirect_uri=${encodeURIComponent(redirect_uri)}` +
-    `&scope=user.info.basic` +
+    `&scope=user.info.basic,user.info.stats` +
 	'&state=' + csrfState;
 const tokenUrl = `https://open.tiktokapis.com/v2/oauth/token`;
 
