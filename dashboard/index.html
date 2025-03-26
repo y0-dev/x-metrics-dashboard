@@ -540,22 +540,19 @@ const tokenUrl = `https://open.tiktokapis.com/v2/oauth/token`;
                 client_key: client_id,
                 client_secret: client_secret
             })
-        });
-
-        const data = response.json();
+        }).then(function(response) { return response.json(); })
+		.then(function(data) {
         
-        res.writeHead(200, { 'Content-Type': 'text/html' });
         if(data.access_token) {
-            res.end(`Access Token: ${data.access_token}<br>Expires In: ${data.expires_in}`);
             console.log(`Access Token: ${data.access_token}`);
             console.log(`Expires In: ${data.expires_in}`);
         } else {
-            res.end('No access token received.');
             console.error('No access token received.');
         }
         
         server.close();
 		}
+		});
 
 function Auth(){
 	window.location.href = authUrl;
