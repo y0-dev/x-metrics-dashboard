@@ -29,7 +29,7 @@ const refreshToken = async () => {
 		await saveToken(data.access_token);
 		return data.access_token;
 	} else
-		throw new Error(`access_token error!` + data.error_description);
+		throw new Error(`access_token error!` + data.error_description + ' : ' + accessToken);
 };
 
 const saveToken = async (token) => {
