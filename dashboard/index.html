@@ -369,9 +369,9 @@
         }
       },
       scales: {
-        /*y: {
+        y: {
           type: 'linear',
-          display: true,
+          display: false,
           position: 'left',
           title: {
             display: true,
@@ -387,7 +387,7 @@
         },
         y1: {
           type: 'linear',
-          display: true,
+          display: false,
           position: 'right',
           title: {
             display: true,
@@ -403,7 +403,7 @@
         },
 		y2: {
           type: 'linear',
-          display: true,
+          display: false,
           position: 'right',
           title: {
             display: true,
@@ -419,7 +419,7 @@
         },
 		y3: {
           type: 'linear',
-          display: true,
+          display: false,
           position: 'right',
           title: {
             display: true,
@@ -432,7 +432,7 @@
           grid: {
             drawOnChartArea: false
           }
-        }*/
+        }
       }
     };
 
@@ -450,8 +450,8 @@
         const dates = data.map(item => item.date);
         const followers = data.map(item => item.followers_count);
         const tweets = data.map(item => item.tweet_count);
-        const tfollowers = data.map(item => item.follower_count);
-        const videos = data.map(item => item.video_count);
+        const tfollowers = tdata.map(item => item.follower_count);
+        const videos = tdata.map(item => item.video_count);
 
         // Calculate daily changes
         const currentFollowers = followers[followers.length - 1];
