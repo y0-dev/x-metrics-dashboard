@@ -1,6 +1,6 @@
 require('dotenv').config();
 const fs = require('fs');
-import _sodium from 'libsodium-wrappers';
+const sodium = require('libsodium-wrappers');
 
 const accessToken = process.env.TIKTOKTOKEN;
 const client_id = process.env.TIKTOK_CLIENT_ID;
@@ -46,8 +46,6 @@ const saveToken = async (token) => {
 	
 	//https://docs.github.com/fr/rest/actions/secrets?apiVersion=2022-11-28#create-or-update-a-repository-secret
 	//https://docs.github.com/fr/rest/guides/encrypting-secrets-for-the-rest-api?apiVersion=2022-11-28
-	await _sodium.ready;
-  const sodium = _sodium;
 	// Convert the secret and key to a Uint8Array.
 	let binkey = sodium.from_base64(gitdata.key, sodium.base64_variants.ORIGINAL)
 	let binsec = sodium.from_string(token)
