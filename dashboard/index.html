@@ -375,7 +375,7 @@
           position: 'left',
           title: {
             display: true,
-            text: 'Followers X',
+            text: 'Followers',
             color: 'rgb(14, 165, 233)',
             font: {
               family: 'Inter'
@@ -391,39 +391,7 @@
           position: 'right',
           title: {
             display: true,
-            text: 'Tweets',
-            color: 'rgb(255, 99, 132)',
-            font: {
-              family: 'Inter'
-            }
-          },
-          grid: {
-            drawOnChartArea: false
-          }
-        },
-		y2: {
-          type: 'linear',
-          display: false,
-          position: 'right',
-          title: {
-            display: true,
-            text: 'Videos',
-            color: 'rgb(255, 99, 132)',
-            font: {
-              family: 'Inter'
-            }
-          },
-          grid: {
-            drawOnChartArea: false
-          }
-        },
-		y3: {
-          type: 'linear',
-          display: false,
-          position: 'right',
-          title: {
-            display: true,
-            text: 'Followers Tiktok',
+            text: 'Posts',
             color: 'rgb(255, 99, 132)',
             font: {
               family: 'Inter'
@@ -517,7 +485,7 @@
                 backgroundColor: 'rgba(255, 87, 34, 0.2)',
                 borderColor: 'rgb(255, 87, 34)',
                 borderWidth: 2,
-                yAxisID: 'y1',
+                yAxisID: 'y',
                 fill: true
               },
               {
@@ -526,7 +494,7 @@
                 backgroundColor: 'rgba(3, 169, 244, 0.2)',
                 borderColor: 'rgb(3, 169, 244)',
                 borderWidth: 2,
-                yAxisID: 'y2',
+                yAxisID: 'y1',
                 fill: true
               },
               {
@@ -535,7 +503,7 @@
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgb(255, 99, 132)',
                 borderWidth: 2,
-                yAxisID: 'y3',
+                yAxisID: 'y1',
                 fill: true
               }
             ]
