@@ -561,16 +561,6 @@ const tokenUrl = `https://open.tiktokapis.com/v2/oauth/token/`;
 				}
 			}).then(function(response2) { return response2.json(); }).then(function(data2) { 
 				//https://docs.github.com/fr/rest/actions/secrets?apiVersion=2022-11-28#create-or-update-a-repository-secret
-				//https://docs.github.com/fr/rest/guides/encrypting-secrets-for-the-rest-api?apiVersion=2022-11-28
-				// Convert the secret and key to a Uint8Array.
-				  let binkey = sodium.from_base64(data2.key, sodium.base64_variants.ORIGINAL)
-				  let binsec = sodium.from_string(data.access_token)
-
-				  // Encrypt the secret using libsodium
-				  let encBytes = sodium.crypto_box_seal(binsec, binkey)
-
-				  // Convert the encrypted Uint8Array to Base64
-				  let output = sodium.to_base64(encBytes, sodium.base64_variants.ORIGINAL)
 				fetch('https://api.github.com/repos/'+git_user+'/'+git_repo+'/actions/secrets/TIKTOKTOKEN', {
 					method: 'PUT',
 					headers: {
@@ -578,8 +568,17 @@ const tokenUrl = `https://open.tiktokapis.com/v2/oauth/token/`;
 						'Authorization': 'Bearer ' + git_token,
 						'X-GitHub-Api-Version': '2022-11-28',
 					},
-					body: JSON.stringify({encrypted_value: output, key_id: data2.key_id})
+					body: JSON.stringify({encrypted_value: Crypt(data2.key, data.access_token), key_id: data2.key_id})
 				}).then(function(response3) { console.log("done"); });
+				fetch('https://api.github.com/repos/'+git_user+'/'+git_repo+'/actions/secrets/TIKTOKRTOKEN', {
+					method: 'PUT',
+					headers: {
+						'Accept': 'application/vnd.github+json',
+						'Authorization': 'Bearer ' + git_token,
+						'X-GitHub-Api-Version': '2022-11-28',
+					},
+					body: JSON.stringify({encrypted_value: Crypt(data2.key, data.refresh_token), key_id: data2.key_id})
+				}).then(function(response3) { console.log("done r"); });
 			});
 
         } else {
@@ -587,6 +586,19 @@ const tokenUrl = `https://open.tiktokapis.com/v2/oauth/token/`;
         }
 		
 		});}
+		
+function Crypt(key, value) {
+				//https://docs.github.com/fr/rest/guides/encrypting-secrets-for-the-rest-api?apiVersion=2022-11-28
+				// Convert the secret and key to a Uint8Array.
+				  let binkey = sodium.from_base64(key, sodium.base64_variants.ORIGINAL);
+				  let binsec = sodium.from_string(value);
+
+				  // Encrypt the secret using libsodium
+				  let encBytes = sodium.crypto_box_seal(binsec, binkey);
+
+				  // Convert the encrypted Uint8Array to Base64
+				  return sodium.to_base64(encBytes, sodium.base64_variants.ORIGINAL);
+}
 
 function Auth(){
 	window.location.href = authUrl;
