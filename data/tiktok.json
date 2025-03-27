@@ -1,5 +1,47 @@
 [
   {
+    "date": "2025-03-19",
+    "follower_count": 1,
+    "likes_count": 41,
+    "video_count": 4
+  },
+  {
+    "date": "2025-03-20",
+    "follower_count": 3,
+    "likes_count": 49,
+    "video_count": 4
+  },
+  {
+    "date": "2025-03-21",
+    "follower_count": 6,
+    "likes_count": 49,
+    "video_count": 6
+  },
+  {
+    "date": "2025-03-22",
+    "follower_count": 6,
+    "likes_count": 49,
+    "video_count": 6
+  },
+  {
+    "date": "2025-03-23",
+    "follower_count": 5,
+    "likes_count": 49,
+    "video_count": 6
+  },
+  {
+    "date": "2025-03-24",
+    "follower_count": 5,
+    "likes_count": 92,
+    "video_count": 6
+  },
+  {
+    "date": "2025-03-25",
+    "follower_count": 7,
+    "likes_count": 92,
+    "video_count": 6
+  },
+  {
     "date": "2025-03-26",
     "follower_count": 7,
     "likes_count": 108,
