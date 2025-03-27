@@ -1,0 +1,49 @@
+name: Fetch Tiktok Data
+
+on:
+  schedule:
+    # Runs at 4 AM UTC (5 AM in Poland during Standard Time)
+    - cron: '0 4 * * *'
+  workflow_dispatch: # This line enables manual triggering of the action
+
+jobs:
+  fetch_data:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Fetch Data from Platform Tiktok
+        id: fetch_data
+        run: node tiktok_fetch_data.js
+        env:
+          TIKTOK_CLIENT_ID: ${{ secrets.TIKTOK_CLIENT_ID }}
+          TIKTOK_CLIENT_SECRET: ${{ secrets.TIKTOK_CLIENT_SECRET }}
+          GIT_TOKEN: ${{ secrets.GIT_TOKEN }}
+          TIKTOKTOKEN: ${{ secrets.TIKTOKTOKEN }}
+
+      - name: Save data
+        run: node tiktok_save_data.js
+        env:
+          METRICS: ${{ steps.fetch_data.outputs.METRICS }}
+
+      - name: Commit and push if there's changes
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add data/tiktok.json
+          git commit -m "Update data for Platform Tiktok" || exit 0  # exit 0 if no changes
+          git push
