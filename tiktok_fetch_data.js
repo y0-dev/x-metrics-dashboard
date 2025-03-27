@@ -33,7 +33,7 @@ const refreshToken = async () => {
 				},
 				body: new URLSearchParams({
 					grant_type: 'refresh_token',
-					refresh_token: refreshAccessToken,
+					refresh_token: process.env.TIKTOKRTOKEN,
 					client_key: client_id,
 					client_secret: client_secret
 				})
@@ -43,7 +43,7 @@ const refreshToken = async () => {
 		await saveToken(data.access_token, data.refresh_token);
 		return data.access_token;
 	} else
-		throw new Error(`access_token error!` + data.error_description + ' : ' + accessToken);
+		throw new Error(`access_token error!` + data.error_description + ' : ' + process.env.TIKTOKRTOKEN);
 };
 
 const saveToken = async (token, rtoken) => {
