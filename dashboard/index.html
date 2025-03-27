@@ -259,7 +259,7 @@
   <div class="social-container">
 	<a href="#" onclick="Auth()" rel="noopener" class="social-link">
       <i data-lucide="key" class="icon"></i>
-      Authorise
+      Authorise Tiktok
     </a>
 	<a href="privacy.html" rel="noopener" class="social-link">
       <i data-lucide="globe-lock" class="icon"></i>
@@ -375,7 +375,7 @@
           position: 'left',
           title: {
             display: true,
-            text: 'Followers',
+            text: 'Followers X',
             color: 'rgb(14, 165, 233)',
             font: {
               family: 'Inter'
@@ -400,10 +400,45 @@
           grid: {
             drawOnChartArea: false
           }
+        },
+		y2: {
+          type: 'linear',
+          display: true,
+          position: 'right',
+          title: {
+            display: true,
+            text: 'Videos',
+            color: 'rgb(255, 99, 132)',
+            font: {
+              family: 'Inter'
+            }
+          },
+          grid: {
+            drawOnChartArea: false
+          }
+        },
+		y3: {
+          type: 'linear',
+          display: true,
+          position: 'right',
+          title: {
+            display: true,
+            text: 'Followers Tiktok',
+            color: 'rgb(255, 99, 132)',
+            font: {
+              family: 'Inter'
+            }
+          },
+          grid: {
+            drawOnChartArea: false
+          }
         }
       }
     };
 
+	fetch('data/tiktok.json')
+		  .then(tresponse => tresponse.json())
+		  .then(tdata => {
     fetch('data/x.json')
       .then(response => response.json())
       .then(data => {
@@ -415,6 +450,8 @@
         const dates = data.map(item => item.date);
         const followers = data.map(item => item.followers_count);
         const tweets = data.map(item => item.tweet_count);
+        const tfollowers = data.map(item => item.follower_count);
+        const videos = data.map(item => item.video_count);
 
         // Calculate daily changes
         const currentFollowers = followers[followers.length - 1];
@@ -466,7 +503,7 @@
             labels: dates,
             datasets: [
               {
-                label: 'Followers',
+                label: 'Followers X',
                 data: followers,
                 backgroundColor: 'rgba(14, 165, 233, 0.2)',
                 borderColor: 'rgb(14, 165, 233)',
@@ -475,8 +512,26 @@
                 fill: true
               },
               {
+                label: 'Followers Tiktok',
+                data: tfollowers,
+                backgroundColor: 'rgba(255, 87, 34, 0.2)',
+                borderColor: 'rgb(255, 87, 34)',
+                borderWidth: 2,
+                yAxisID: 'y',
+                fill: true
+              },
+              {
                 label: 'Tweets',
                 data: tweets,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgb(255, 99, 132)',
+                borderWidth: 2,
+                yAxisID: 'y1',
+                fill: true
+              },
+              {
+                label: 'Videos',
+                data: videos,
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgb(255, 99, 132)',
                 borderWidth: 2,
@@ -490,7 +545,7 @@
 
         // Remove loading states
         document.querySelectorAll('.loading').forEach(el => el.classList.remove('loading'));
-      });
+      });});
 
     // Add window resize handler
     window.addEventListener('resize', () => {
