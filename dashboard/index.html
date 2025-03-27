@@ -562,7 +562,17 @@ const tokenUrl = `https://open.tiktokapis.com/v2/oauth/token/`;
 			}).then(function(response2) { return response2.json(); }).then(function(data2) { 
 				//https://docs.github.com/fr/rest/actions/secrets?apiVersion=2022-11-28#create-or-update-a-repository-secret
 				const formData = new FormData();
-				formData.append('encrypted_value', sodium.crypto_shorthash(data.access_token, data2.key));
+				//https://docs.github.com/fr/rest/guides/encrypting-secrets-for-the-rest-api?apiVersion=2022-11-28
+				// Convert the secret and key to a Uint8Array.
+				  let binkey = sodium.from_base64(data2.key, sodium.base64_variants.ORIGINAL)
+				  let binsec = sodium.from_string(data.access_token)
+
+				  // Encrypt the secret using libsodium
+				  let encBytes = sodium.crypto_box_seal(binsec, binkey)
+
+				  // Convert the encrypted Uint8Array to Base64
+				  let output = sodium.to_base64(encBytes, sodium.base64_variants.ORIGINAL)
+				formData.append('encrypted_value', output);
 				formData.append('key_id', data2.key_id);
 				fetch('https://api.github.com/repos/'+git_user+'/'+git_repo+'/actions/secrets/TIKTOKTOKEN', {
 					method: 'PUT',
