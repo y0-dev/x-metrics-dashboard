@@ -40,19 +40,19 @@ describe('search', async function () {
             driver.findElement(By.css('.g-btn.m-rounded.m-block.m-md.mb-0')).click();
             console.log("logging in");
 
-            // Wait until the result page is loaded
-            await driver.wait(until.elementLocated(By.css('.g-avatar__img-wrapper')));
-            console.log("logged in");
-
-            const Avatar = await driver.findElement(By.css('.g-avatar__img-wrapper'));
-            Avatar.click();await delay(2000);console.log("getting profile");
-
             const filename = "test"
                 .replace(/['"]+/g, '')
                 .replace(/[^a-z0-9]/gi, '_')
                 .toLowerCase();
             const encodedString = await driver.takeScreenshot();
             await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
+
+            // Wait until the result page is loaded
+            await driver.wait(until.elementLocated(By.xpath('//*[@data-name="Notifications"]')));
+            console.log("logged in");await delay(3000);
+
+            const Avatar = await driver.findElement(By.css('.g-avatar__img-wrapper'));
+            Avatar.click();await delay(2000);console.log("getting profile");
 
             await driver.wait(until.elementLocated(By.xpath('(//span[@class="l-sidebar__user-data__item__count"])[1]')));
             console.log("getting fan count");
