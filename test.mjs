@@ -31,8 +31,10 @@ describe('search', async function () {
         const emailBox = await driver.findElement(By.id('input-14'));
         const passwordBox = await driver.findElement(By.id('input-17'));
         //try {
-            await emailBox.setFormValue(process.env.EMAIL);//await emailBox.sendKeys(process.env.EMAIL);//TODO ElementNotInteractableError: element not interactable
-            await passwordBox.setFormValue(process.env.PASSWORD);//await passwordBox.sendKeys(process.env.PASSWORD, Key.ENTER);
+            //await emailBox.sendKeys(process.env.EMAIL);//TODO ElementNotInteractableError: element not interactable
+            //await passwordBox.sendKeys(process.env.PASSWORD, Key.ENTER);
+            driver.executeScript("arguments[0].value='"+process.env.EMAIL+"';", emailBox);
+            driver.executeScript("arguments[0].value='"+process.env.PASSWORD+"';", passwordBox);
             driver.findElement(By.css('.g-btn.m-rounded.m-block.m-md.mb-0')).click();
 
             // Wait until the result page is loaded
