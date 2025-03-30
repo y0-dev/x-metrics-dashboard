@@ -34,7 +34,7 @@ describe('search', async function () {
             await emailBox.sendKeys(process.env.EMAIL);//TODO ElementNotInteractableError: element not interactable
             await passwordBox.sendKeys(process.env.PASSWORD, Key.ENTER);
         } catch (e) {
-            const filename = this.currentTest.fullTitle()
+            const filename = "test"
                 .replace(/['"]+/g, '')
                 .replace(/[^a-z0-9]/gi, '_')
                 .toLowerCase();
