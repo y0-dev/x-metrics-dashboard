@@ -460,7 +460,7 @@
 
         document.getElementById('currentTweets'+name).textContent = 
           `${currentTweets.toLocaleString()}`;
-        document.getElementById('tweetsChange').innerHTML = 
+        document.getElementById('tweetsChange'+name).innerHTML = 
           createChangeHTML(tweetsDiff, 'yesterday');
         document.getElementById('tweetsChange'+name).className = 
           `change ${tweetsDiff >= 0 ? 'positive-change' : 'negative-change'}`;
