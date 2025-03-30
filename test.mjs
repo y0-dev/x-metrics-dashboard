@@ -19,7 +19,7 @@ describe('search', async function () {
 
         // Wait until the result page is loaded
         await driver.wait(until.elementLocated(By.id('input-14')));
-        await delay(2000);
+        await delay(3000);
         await driver.wait(until.elementIsVisible(driver.findElement(By.id('input-14'))));
 
         //const source = await driver.getPageSource();
