@@ -6,9 +6,9 @@ describe('search', async function () {
     this.timeout(10000);
     let driver;
 
-    /*if (!fs.existsSync('./screenshots')) {
+    if (!fs.existsSync('./screenshots')) {
         fs.mkdirSync('./screenshots');
-    }*/
+    }
 
     const delay = ms => new Promise(res => setTimeout(res, ms));
 
@@ -30,8 +30,17 @@ describe('search', async function () {
 
         const emailBox = await driver.findElement(By.id('input-14'));
         const passwordBox = await driver.findElement(By.id('input-17'));
-        await emailBox.sendKeys(process.env.EMAIL);
-        await passwordBox.sendKeys(process.env.PASSWORD, Key.ENTER);
+        try {
+            await emailBox.sendKeys(process.env.EMAIL);//TODO ElementNotInteractableError: element not interactable
+            await passwordBox.sendKeys(process.env.PASSWORD, Key.ENTER);
+        } catch (e) {
+            const filename = this.currentTest.fullTitle()
+                .replace(/['"]+/g, '')
+                .replace(/[^a-z0-9]/gi, '_')
+                .toLowerCase();
+            const encodedString = await driver.takeScreenshot();
+            await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
+        }
 
         // Wait until the result page is loaded
         await driver.wait(until.elementLocated(By.css('.g-avatar__img-wrapper')));
