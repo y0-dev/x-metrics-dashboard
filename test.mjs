@@ -10,6 +10,8 @@ describe('search', async function () {
         fs.mkdirSync('./screenshots');
     }*/
 
+    const delay = ms => new Promise(res => setTimeout(res, ms));
+
     // A helper function to start a web search
     const search = async () => {
         // Automate DuckDuckGo search
@@ -17,7 +19,7 @@ describe('search', async function () {
 
         // Wait until the result page is loaded
         await driver.wait(until.elementLocated(By.id('input-14')));
-        await setTimeout(1000);
+        await delay(1000);
         await driver.wait(until.elementIsVisible(driver.findElement(By.id('input-14'))));
 
         //const source = await driver.getPageSource();
