@@ -16,7 +16,7 @@ describe('search', async function () {
         await driver.get('https://onlyfans.com/');
 
         // Wait until the result page is loaded
-        await driver.wait(until.elementIsVisible(By.id('input-14')));
+        await driver.wait(until.elementIsVisible(driver.findElement(By.id('input-14'))));
 
         //const source = await driver.getPageSource();
         //if (source.includes('you are human'))
