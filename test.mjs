@@ -47,6 +47,13 @@ describe('search', async function () {
             const Avatar = await driver.findElement(By.css('.g-avatar__img-wrapper'));
             Avatar.click();await delay(2000);console.log("getting profile");
 
+            const filename = "test"
+                .replace(/['"]+/g, '')
+                .replace(/[^a-z0-9]/gi, '_')
+                .toLowerCase();
+            const encodedString = await driver.takeScreenshot();
+            await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
+
             await driver.wait(until.elementLocated(By.xpath('(//span[@class="l-sidebar__user-data__item__count"])[1]')));
             console.log("getting fan count");
             const FanCount = await driver.findElement(By.xpath('(//span[@class="l-sidebar__user-data__item__count"])[1]'));
