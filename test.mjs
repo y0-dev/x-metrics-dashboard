@@ -21,6 +21,7 @@ describe('search', async function () {
         await driver.wait(until.elementLocated(By.id('input-14')));
         await delay(3000);
         await driver.wait(until.elementIsVisible(driver.findElement(By.id('input-14'))));
+        await driver.wait(until.elementIsEnabled(driver.findElement(By.id('input-14'))));
 
         //const source = await driver.getPageSource();
         //if (source.includes('you are human'))
