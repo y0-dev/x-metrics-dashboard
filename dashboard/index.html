@@ -450,12 +450,12 @@
         document.getElementById('currentFollowers'+name).textContent = 
           `${currentFollowers.toLocaleString()}`;
         document.getElementById('followersChange'+name).innerHTML = 
-          createChangeHTML(followersDiff, 'yesterday');
+          createChangeHTML(followersDiff, 'yesterday'+name);
         document.getElementById('followersChange'+name).className = 
           `change ${followersDiff >= 0 ? 'positive-change' : 'negative-change'}`;
         document.getElementById('followersWeekChange'+name).innerHTML = 
           createChangeHTML(followersWeekDiff, 'last week');
-        document.getElementById('followersWeekChange').className = 
+        document.getElementById('followersWeekChange'+name).className = 
           `change ${followersWeekDiff >= 0 ? 'positive-change' : 'negative-change'}`;
 
         document.getElementById('currentTweets'+name).textContent = 
