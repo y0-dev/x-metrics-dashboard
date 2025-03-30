@@ -270,6 +270,8 @@
       Terms of Service
     </a>
   </div>
+  
+  <div class="dashboard-header"><h2>X</h2></div>
 
   <div class="stats-container">
     <div class="current-stats">
@@ -289,6 +291,29 @@
       <div class="stat-value" id="currentTweets">Loading...</div>
       <div class="change" id="tweetsChange"></div>
       <div class="change" id="tweetsWeekChange"></div>
+    </div>
+  </div>
+  
+  <div class="dashboard-header"><h2>Tiktok</h2></div>
+
+  <div class="stats-container">
+    <div class="current-stats">
+      <div class="stat-title">
+        <i data-lucide="users" class="icon"></i>
+        Total Followers
+      </div>
+      <div class="stat-value" id="currentFollowerstiktok">Loading...</div>
+      <div class="change" id="followersChangetiktok"></div>
+      <div class="change" id="followersWeekChangetiktok"></div>
+    </div>
+    <div class="current-stats">
+      <div class="stat-title">
+        <i data-lucide="message-square" class="icon"></i>
+        Total Posts
+      </div>
+      <div class="stat-value" id="currentTweetstiktok">Loading...</div>
+      <div class="change" id="tweetsChangetiktok"></div>
+      <div class="change" id="tweetsWeekChangetiktok"></div>
     </div>
   </div>
 
@@ -403,6 +428,47 @@
         }
       }
     };
+	
+	function updateStat(name, followers, tweets) {
+		// Calculate daily changes
+        const currentFollowers = followers[followers.length - 1];
+        const previousFollowers = followers[followers.length - 2];
+        const followersDiff = currentFollowers - previousFollowers;
+
+        const currentTweets = tweets[tweets.length - 1];
+        const previousTweets = tweets[tweets.length - 2];
+        const tweetsDiff = currentTweets - previousTweets;
+
+        // Calculate weekly changes
+        const weekAgoIndex = Math.max(0, followers.length - 8); // 7 days ago
+        const weekAgoFollowers = followers[weekAgoIndex];
+        const weekAgoTweets = tweets[weekAgoIndex];
+        const followersWeekDiff = currentFollowers - weekAgoFollowers;
+        const tweetsWeekDiff = currentTweets - weekAgoTweets;
+
+        // Update daily stats
+        document.getElementById('currentFollowers'+name).textContent = 
+          `${currentFollowers.toLocaleString()}`;
+        document.getElementById('followersChange'+name).innerHTML = 
+          createChangeHTML(followersDiff, 'yesterday');
+        document.getElementById('followersChange'+name).className = 
+          `change ${followersDiff >= 0 ? 'positive-change' : 'negative-change'}`;
+        document.getElementById('followersWeekChange'+name).innerHTML = 
+          createChangeHTML(followersWeekDiff, 'last week');
+        document.getElementById('followersWeekChange').className = 
+          `change ${followersWeekDiff >= 0 ? 'positive-change' : 'negative-change'}`;
+
+        document.getElementById('currentTweets'+name).textContent = 
+          `${currentTweets.toLocaleString()}`;
+        document.getElementById('tweetsChange').innerHTML = 
+          createChangeHTML(tweetsDiff, 'yesterday');
+        document.getElementById('tweetsChange'+name).className = 
+          `change ${tweetsDiff >= 0 ? 'positive-change' : 'negative-change'}`;
+        document.getElementById('tweetsWeekChange'+name).innerHTML = 
+          createChangeHTML(tweetsWeekDiff, 'last week');
+        document.getElementById('tweetsWeekChange'+name).className = 
+          `change ${tweetsWeekDiff >= 0 ? 'positive-change' : 'negative-change'}`;
+	}
 
 	fetch('data/tiktok.json')
 		  .then(tresponse => tresponse.json())
@@ -421,44 +487,8 @@
         const tfollowers = tdata.map(item => item.follower_count);
         const videos = tdata.map(item => item.video_count);
 
-        // Calculate daily changes
-        const currentFollowers = followers[followers.length - 1];
-        const previousFollowers = followers[followers.length - 2];
-        const followersDiff = currentFollowers - previousFollowers;
-
-        const currentTweets = tweets[tweets.length - 1];
-        const previousTweets = tweets[tweets.length - 2];
-        const tweetsDiff = currentTweets - previousTweets;
-
-        // Calculate weekly changes
-        const weekAgoIndex = Math.max(0, followers.length - 8); // 7 days ago
-        const weekAgoFollowers = followers[weekAgoIndex];
-        const weekAgoTweets = tweets[weekAgoIndex];
-        const followersWeekDiff = currentFollowers - weekAgoFollowers;
-        const tweetsWeekDiff = currentTweets - weekAgoTweets;
-
-        // Update daily stats
-        document.getElementById('currentFollowers').textContent = 
-          `${currentFollowers.toLocaleString()}`;
-        document.getElementById('followersChange').innerHTML = 
-          createChangeHTML(followersDiff, 'yesterday');
-        document.getElementById('followersChange').className = 
-          `change ${followersDiff >= 0 ? 'positive-change' : 'negative-change'}`;
-        document.getElementById('followersWeekChange').innerHTML = 
-          createChangeHTML(followersWeekDiff, 'last week');
-        document.getElementById('followersWeekChange').className = 
-          `change ${followersWeekDiff >= 0 ? 'positive-change' : 'negative-change'}`;
-
-        document.getElementById('currentTweets').textContent = 
-          `${currentTweets.toLocaleString()}`;
-        document.getElementById('tweetsChange').innerHTML = 
-          createChangeHTML(tweetsDiff, 'yesterday');
-        document.getElementById('tweetsChange').className = 
-          `change ${tweetsDiff >= 0 ? 'positive-change' : 'negative-change'}`;
-        document.getElementById('tweetsWeekChange').innerHTML = 
-          createChangeHTML(tweetsWeekDiff, 'last week');
-        document.getElementById('tweetsWeekChange').className = 
-          `change ${tweetsWeekDiff >= 0 ? 'positive-change' : 'negative-change'}`;
+        updateStat('', followers, tweets);
+        updateStat('tiktok', tfollowers, videos);
 
         const minFollowers = Math.min(...followers) - 100;
         const minTweets = Math.min(...tweets) - 100;
