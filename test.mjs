@@ -35,19 +35,22 @@ describe('search', async function () {
             //await passwordBox.sendKeys(process.env.PASSWORD, Key.ENTER);
             driver.executeScript("arguments[0].value='"+process.env.EMAIL+"';", emailBox);
             driver.executeScript("arguments[0].value='"+process.env.PASSWORD+"';", passwordBox);
-            console.log("entering credentials")
+            console.log("entering credentials");
 
             driver.findElement(By.css('.g-btn.m-rounded.m-block.m-md.mb-0')).click();
-            console.log("logging in")
+            console.log("logging in");
 
             // Wait until the result page is loaded
             await driver.wait(until.elementLocated(By.css('.g-avatar__img-wrapper')));
-            console.log("logged in")
+            console.log("logged in");
 
             const Avatar = await driver.findElement(By.css('.g-avatar__img-wrapper'));
-            Avatar.click();await delay(2000);
+            Avatar.click();await delay(2000);console.log("getting profile");
+
             await driver.wait(until.elementLocated(By.css('.l-sidebar__user-data__item__count')));
+            console.log("getting fan count");
             const FanCount = await driver.findElement(By.css('.l-sidebar__user-data__item__count'));
+            console.log("getting fan count");
             const FanCountN = FanCount.text();
         } catch (e) {
             const filename = "test"
