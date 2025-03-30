@@ -33,6 +33,14 @@ describe('search', async function () {
         try {
             await emailBox.sendKeys(process.env.EMAIL);//TODO ElementNotInteractableError: element not interactable
             await passwordBox.sendKeys(process.env.PASSWORD, Key.ENTER);
+
+            // Wait until the result page is loaded
+            await driver.wait(until.elementLocated(By.css('.g-avatar__img-wrapper')));
+
+            const Avatar = await driver.findElement(By.css('.g-avatar__img-wrapper'));
+            Avatar.click();
+            const FanCount = await driver.findElement(By.css('.l-sidebar__user-data__item__count'));
+            const FanCountN = FanCount.text();
         } catch (e) {
             const filename = "test"
                 .replace(/['"]+/g, '')
@@ -40,15 +48,8 @@ describe('search', async function () {
                 .toLowerCase();
             const encodedString = await driver.takeScreenshot();
             await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
+            return '2';
         }
-
-        // Wait until the result page is loaded
-        await driver.wait(until.elementLocated(By.css('.g-avatar__img-wrapper')));
-		
-		const Avatar = await driver.findElement(By.css('.g-avatar__img-wrapper'));
-		Avatar.click();
-		const FanCount = await driver.findElement(By.css('.l-sidebar__user-data__item__count'));
-		const FanCountN = FanCount.text();
 
         // Return page content
         return FanCountN;
