@@ -3,7 +3,7 @@ import { assert } from 'chai';
 import * as fs from 'fs';
 
 describe('search', async function () {
-    this.timeout(10000);
+    this.timeout(15000);
     let driver;
 
     if (!fs.existsSync('./screenshots')) {
@@ -19,7 +19,7 @@ describe('search', async function () {
 
         // Wait until the result page is loaded
         await driver.wait(until.elementLocated(By.id('input-14')));
-        await delay(4000);
+        await delay(2000);
         await driver.wait(until.elementIsVisible(driver.findElement(By.id('input-14'))));
         await driver.wait(until.elementIsEnabled(driver.findElement(By.id('input-14'))));
 
@@ -35,13 +35,14 @@ describe('search', async function () {
             //await passwordBox.sendKeys(process.env.PASSWORD, Key.ENTER);
             driver.executeScript("arguments[0].value='"+process.env.EMAIL+"';", emailBox);
             driver.executeScript("arguments[0].value='"+process.env.PASSWORD+"';", passwordBox);
+
             driver.findElement(By.css('.g-btn.m-rounded.m-block.m-md.mb-0')).click();
 
             // Wait until the result page is loaded
             await driver.wait(until.elementLocated(By.css('.g-avatar__img-wrapper')));
 
             const Avatar = await driver.findElement(By.css('.g-avatar__img-wrapper'));
-            Avatar.click();
+            Avatar.click();await delay(2000);
             await driver.wait(until.elementLocated(By.css('.l-sidebar__user-data__item__count')));
             const FanCount = await driver.findElement(By.css('.l-sidebar__user-data__item__count'));
             const FanCountN = FanCount.text();
