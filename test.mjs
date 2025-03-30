@@ -42,6 +42,7 @@ describe('search', async function () {
 
             const Avatar = await driver.findElement(By.css('.g-avatar__img-wrapper'));
             Avatar.click();
+            await driver.wait(until.elementLocated(By.css('.l-sidebar__user-data__item__count')));
             const FanCount = await driver.findElement(By.css('.l-sidebar__user-data__item__count'));
             const FanCountN = FanCount.text();
         /*} catch (e) {
