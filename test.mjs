@@ -15,10 +15,13 @@ describe('search', async function () {
         // Automate DuckDuckGo search
         await driver.get('https://onlyfans.com/');
 
-        const source = await driver.getPageSource();
-        if (source.includes('you are human'))
-            throw new Error('Cloudflare: You are not human');
-        else throw new Error(source);
+        // Wait until the result page is loaded
+        await driver.wait(until.elementLocated(By.id('input-14')));
+
+        //const source = await driver.getPageSource();
+        //if (source.includes('you are human'))
+        //    throw new Error('Cloudflare: You are not human');
+        //else throw new Error(source);
 
         const emailBox = await driver.findElement(By.id('input-14'));
         const passwordBox = await driver.findElement(By.id('input-17'));
