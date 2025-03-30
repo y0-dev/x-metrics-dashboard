@@ -3,7 +3,7 @@ import { assert } from 'chai';
 import * as fs from 'fs';
 
 describe('search', async function () {
-    this.timeout(15000);
+    this.timeout(20000);
     let driver;
 
     if (!fs.existsSync('./screenshots')) {
@@ -35,11 +35,14 @@ describe('search', async function () {
             //await passwordBox.sendKeys(process.env.PASSWORD, Key.ENTER);
             driver.executeScript("arguments[0].value='"+process.env.EMAIL+"';", emailBox);
             driver.executeScript("arguments[0].value='"+process.env.PASSWORD+"';", passwordBox);
+            console.log("entering credentials")
 
             driver.findElement(By.css('.g-btn.m-rounded.m-block.m-md.mb-0')).click();
+            console.log("logging in")
 
             // Wait until the result page is loaded
             await driver.wait(until.elementLocated(By.css('.g-avatar__img-wrapper')));
+            console.log("logged in")
 
             const Avatar = await driver.findElement(By.css('.g-avatar__img-wrapper'));
             Avatar.click();await delay(2000);
