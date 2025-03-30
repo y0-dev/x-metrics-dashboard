@@ -66,6 +66,8 @@ describe('search', async function () {
             .usingServer(server)
             .forBrowser(browser)
             .build();
+
+        await driver.manage().window().maximize();
     });
 
     // After each test, take a screenshot and close the browser
