@@ -450,7 +450,7 @@
         document.getElementById('currentFollowers'+name).textContent = 
           `${currentFollowers.toLocaleString()}`;
         document.getElementById('followersChange'+name).innerHTML = 
-          createChangeHTML(followersDiff, 'yesterday'+name);
+          createChangeHTML(followersDiff, 'yesterday');
         document.getElementById('followersChange'+name).className = 
           `change ${followersDiff >= 0 ? 'positive-change' : 'negative-change'}`;
         document.getElementById('followersWeekChange'+name).innerHTML = 
