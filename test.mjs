@@ -1,5 +1,5 @@
 import { Builder, By, Key, until } from 'selenium-webdriver';
-const { FlutterSeleniumBridge } = require('@rentready/flutter-selenium-bridge');
+import {FlutterSeleniumBridge} from "@rentready/flutter-selenium-bridge";
 import { assert } from 'chai';
 import * as fs from 'fs';
 
