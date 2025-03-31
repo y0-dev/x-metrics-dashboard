@@ -1,4 +1,5 @@
 import { Builder, By, Key, until } from 'selenium-webdriver';
+const { FlutterSeleniumBridge } = require('@rentready/flutter-selenium-bridge');
 import { assert } from 'chai';
 import * as fs from 'fs';
 
@@ -15,11 +16,13 @@ describe('search', async function () {
     // A helper function to start a web search
     const search = async () => {
         // Automate DuckDuckGo search
+        const bridge = new FlutterSeleniumBridge(driver);
         await driver.get('https://onlyfans.com/');
+        await bridge.enableAccessibility();
 
         // Wait until the result page is loaded
         await driver.wait(until.elementLocated(By.id('input-14')));
-        await delay(2000);
+        //await delay(2000);
         await driver.wait(until.elementIsVisible(driver.findElement(By.id('input-14'))));
         await driver.wait(until.elementIsEnabled(driver.findElement(By.id('input-14'))));
 
@@ -33,10 +36,16 @@ describe('search', async function () {
         try {
             //await emailBox.sendKeys(process.env.EMAIL);//TODO ElementNotInteractableError: element not interactable
             //await passwordBox.sendKeys(process.env.PASSWORD, Key.ENTER);
-            driver.executeScript("arguments[0].value='"+process.env.EMAIL+"';", emailBox);
-            driver.executeScript("arguments[0].value='"+process.env.PASSWORD+"';", passwordBox);
+            //https://www.reddit.com/r/flutterhelp/comments/187dqfe/how_enter_input_field_values_using_javascript/ => impossible avec flutter
+            //driver.executeScript("arguments[0].select();arguments[0].value='"+process.env.EMAIL+"';", emailBox);
+            //driver.executeScript("arguments[0].select();arguments[0].value='"+process.env.PASSWORD+"';", passwordBox);
+            const emailInput = await bridge.activateInputField(By.id('input-14'));
+            await emailInput.sendKeys(process.env.EMAIL);
+            const passwordInput = await bridge.activateInputField(By.id('input-17'));
+            await passwordInput.sendKeys(process.env.PASSWORD, Key.ENTER);
             console.log("entering credentials");
 
+            //TODO there is actually no input value and button is still gray lol
             driver.findElement(By.css('.g-btn.m-rounded.m-block.m-md.mb-0')).click();
             console.log("logging in");
 
