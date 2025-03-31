@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-        "test": "npx mocha test.mjs"
+    "test": "npx mocha test.mjs"
   },
   "devDependencies": {
-        "chai": "^4.3.7",
-        "mocha": "^10.8.2",
-        "mocha-junit-reporter": "^2.2.0",
-        "selenium-webdriver": "^4.28.1"
+    "@rentready/flutter-selenium-bridge": "^1.0.5",
+    "chai": "^4.3.7",
+    "mocha": "^10.8.2",
+    "mocha-junit-reporter": "^2.2.0",
+    "selenium-webdriver": "^4.28.1"
   },
   "author": "Karol Horosin",
   "license": "ISC",
