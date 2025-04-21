@@ -88,5 +88,131 @@
     "follower_count": 22,
     "likes_count": 320,
     "video_count": 12
+  },
+  {
+    "date": "2025-04-01",
+    "follower_count": 23,
+    "likes_count": 323,
+    "video_count": 13
+  },
+  {
+    "date": "2025-04-02",
+    "follower_count": 24,
+    "likes_count": 344,
+    "video_count": 14
+  },
+  {
+    "date": "2025-04-03",
+    "follower_count": 24,
+    "likes_count": 345,
+    "video_count": 14
+  },
+  {
+    "date": "2025-04-04",
+    "video_count": 14,
+    "follower_count": 24,
+    "likes_count": 345
+  },
+  {
+    "date": "2025-04-05",
+    "follower_count": 25,
+    "likes_count": 357,
+    "video_count": 15
+  },
+  {
+    "date": "2025-04-06",
+    "follower_count": 26,
+    "likes_count": 368,
+    "video_count": 19
+  },
+  {
+    "date": "2025-04-07",
+    "follower_count": 26,
+    "likes_count": 380,
+    "video_count": 20
+  },
+  {
+    "date": "2025-04-08",
+    "follower_count": 27,
+    "likes_count": 397,
+    "video_count": 21
+  },
+  {
+    "date": "2025-04-09",
+    "follower_count": 29,
+    "likes_count": 410,
+    "video_count": 22
+  },
+  {
+    "date": "2025-04-10",
+    "follower_count": 28,
+    "likes_count": 409,
+    "video_count": 22
+  },
+  {
+    "date": "2025-04-11",
+    "video_count": 22,
+    "follower_count": 28,
+    "likes_count": 409
+  },
+  {
+    "date": "2025-04-12",
+    "follower_count": 28,
+    "likes_count": 409,
+    "video_count": 22
+  },
+  {
+    "date": "2025-04-13",
+    "likes_count": 409,
+    "video_count": 22,
+    "follower_count": 28
+  },
+  {
+    "date": "2025-04-14",
+    "likes_count": 409,
+    "video_count": 22,
+    "follower_count": 28
+  },
+  {
+    "date": "2025-04-15",
+    "follower_count": 28,
+    "likes_count": 409,
+    "video_count": 22
+  },
+  {
+    "date": "2025-04-16",
+    "follower_count": 29,
+    "likes_count": 443,
+    "video_count": 23
+  },
+  {
+    "date": "2025-04-17",
+    "follower_count": 29,
+    "likes_count": 443,
+    "video_count": 23
+  },
+  {
+    "date": "2025-04-18",
+    "follower_count": 29,
+    "likes_count": 451,
+    "video_count": 24
+  },
+  {
+    "date": "2025-04-19",
+    "video_count": 24,
+    "follower_count": 29,
+    "likes_count": 450
+  },
+  {
+    "date": "2025-04-20",
+    "follower_count": 29,
+    "likes_count": 450,
+    "video_count": 24
+  },
+  {
+    "date": "2025-04-21",
+    "likes_count": 450,
+    "video_count": 24,
+    "follower_count": 29
   }
 ]
