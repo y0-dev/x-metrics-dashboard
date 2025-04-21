@@ -317,6 +317,29 @@
     </div>
   </div>
 
+  <div class="dashboard-header"><h2>Reddit</h2></div>
+
+  <div class="stats-container">
+    <div class="current-stats">
+      <div class="stat-title">
+        <i data-lucide="users" class="icon"></i>
+        Total Followers
+      </div>
+      <div class="stat-value" id="currentFollowersreddit">Loading...</div>
+      <div class="change" id="followersChangereddit"></div>
+      <div class="change" id="followersWeekChangereddit"></div>
+    </div>
+    <div class="current-stats">
+      <div class="stat-title">
+        <i data-lucide="message-square" class="icon"></i>
+        Total Posts
+      </div>
+      <div class="stat-value" id="currentTweetsreddit">Loading...</div>
+      <div class="change" id="tweetsChangereddit"></div>
+      <div class="change" id="tweetsWeekChangereddit"></div>
+    </div>
+  </div>
+
   <div class="chart-section">
     <div class="chart-header">
       <h2>
@@ -429,22 +452,25 @@
       }
     };
 	
-	function updateStat(name, followers, tweets) {
+	function updateStat(name, followers, tweets = false) {
 		// Calculate daily changes
         const currentFollowers = followers[followers.length - 1];
         const previousFollowers = followers[followers.length - 2];
         const followersDiff = currentFollowers - previousFollowers;
 
+        if (tweets) {
         const currentTweets = tweets[tweets.length - 1];
         const previousTweets = tweets[tweets.length - 2];
         const tweetsDiff = currentTweets - previousTweets;
 
         // Calculate weekly changes
         const weekAgoIndex = Math.max(0, followers.length - 8); // 7 days ago
-        const weekAgoFollowers = followers[weekAgoIndex];
         const weekAgoTweets = tweets[weekAgoIndex];
-        const followersWeekDiff = currentFollowers - weekAgoFollowers;
         const tweetsWeekDiff = currentTweets - weekAgoTweets;
+        }
+        const weekAgoFollowers = followers[weekAgoIndex];
+        const followersWeekDiff = currentFollowers - weekAgoFollowers;
+
 
         // Update daily stats
         document.getElementById('currentFollowers'+name).textContent = 
@@ -458,18 +484,23 @@
         document.getElementById('followersWeekChange'+name).className = 
           `change ${followersWeekDiff >= 0 ? 'positive-change' : 'negative-change'}`;
 
-        document.getElementById('currentTweets'+name).textContent = 
-          `${currentTweets.toLocaleString()}`;
-        document.getElementById('tweetsChange'+name).innerHTML = 
-          createChangeHTML(tweetsDiff, 'yesterday');
-        document.getElementById('tweetsChange'+name).className = 
-          `change ${tweetsDiff >= 0 ? 'positive-change' : 'negative-change'}`;
-        document.getElementById('tweetsWeekChange'+name).innerHTML = 
-          createChangeHTML(tweetsWeekDiff, 'last week');
-        document.getElementById('tweetsWeekChange'+name).className = 
-          `change ${tweetsWeekDiff >= 0 ? 'positive-change' : 'negative-change'}`;
+      if (tweets) {
+        document.getElementById('currentTweets' + name).textContent =
+                `${currentTweets.toLocaleString()}`;
+        document.getElementById('tweetsChange' + name).innerHTML =
+                createChangeHTML(tweetsDiff, 'yesterday');
+        document.getElementById('tweetsChange' + name).className =
+                `change ${tweetsDiff >= 0 ? 'positive-change' : 'negative-change'}`;
+        document.getElementById('tweetsWeekChange' + name).innerHTML =
+                createChangeHTML(tweetsWeekDiff, 'last week');
+        document.getElementById('tweetsWeekChange' + name).className =
+                `change ${tweetsWeekDiff >= 0 ? 'positive-change' : 'negative-change'}`;
+      }
 	}
 
+    fetch('data/reddit.json')
+            .then(tresponse => tresponse.json())
+            .then(rdata => {
 	fetch('data/tiktok.json')
 		  .then(tresponse => tresponse.json())
 		  .then(tdata => {
@@ -486,9 +517,11 @@
         const tweets = data.map(item => item.tweet_count);
         const tfollowers = tdata.map(item => item.follower_count);
         const videos = tdata.map(item => item.video_count);
+        const rfollowers = rdata.map(item => item.subscribers);
 
         updateStat('', followers, tweets);
         updateStat('tiktok', tfollowers, videos);
+        updateStat('reddit', rfollowers);
 
         const minFollowers = Math.min(...followers) - 100;
         const minTweets = Math.min(...tweets) - 100;
@@ -519,6 +552,15 @@
                 fill: true
               },
               {
+                label: 'Followers Reddit',
+                data: rfollowers,
+                backgroundColor: 'rgba(179, 0, 0, 0.2)',
+                borderColor: 'rgb(179, 0, 0)',
+                borderWidth: 2,
+                yAxisID: 'y',
+                fill: true
+              },
+              {
                 label: 'Tweets',
                 data: tweets,
                 backgroundColor: 'rgba(3, 169, 244, 0.2)',
@@ -543,7 +585,7 @@
 
         // Remove loading states
         document.querySelectorAll('.loading').forEach(el => el.classList.remove('loading'));
-      });});
+      });});});
 
     // Add window resize handler
     window.addEventListener('resize', () => {
