@@ -453,21 +453,23 @@
     };
 	
 	function updateStat(name, followers, tweets = false) {
+      var currentTweets, previousTweets, tweetsDiff, weekAgoTweets, tweetsWeekDiff;
+
 		// Calculate daily changes
         const currentFollowers = followers[followers.length - 1];
         const previousFollowers = followers[followers.length - 2];
         const followersDiff = currentFollowers - previousFollowers;
 
         if (tweets) {
-          const currentTweets = tweets[tweets.length - 1];
-          const previousTweets = tweets[tweets.length - 2];
-          const tweetsDiff = currentTweets - previousTweets;
+           currentTweets = tweets[tweets.length - 1];
+           previousTweets = tweets[tweets.length - 2];
+           tweetsDiff = currentTweets - previousTweets;
         }
         // Calculate weekly changes
         const weekAgoIndex = Math.max(0, followers.length - 8); // 7 days ago
        if (tweets) {
-        const weekAgoTweets = tweets[weekAgoIndex];
-        const tweetsWeekDiff = currentTweets - weekAgoTweets;
+         weekAgoTweets = tweets[weekAgoIndex];
+         tweetsWeekDiff = currentTweets - weekAgoTweets;
         }
         const weekAgoFollowers = followers[weekAgoIndex];
         const followersWeekDiff = currentFollowers - weekAgoFollowers;
