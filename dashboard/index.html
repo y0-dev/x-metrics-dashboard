@@ -416,7 +416,7 @@
           hoverRadius: 6
         }
       },
-      scales: {
+      /*scales: {
         y: {
           type: 'linear',
           display: false,
@@ -449,7 +449,7 @@
             drawOnChartArea: false
           }
         }
-      }
+      }*/
     };
 	
 	function updateStat(name, followers, tweets = false) {
@@ -562,7 +562,7 @@
                 borderWidth: 2,
                 yAxisID: 'y',
                 fill: true
-              },
+              }/*,
               {
                 label: 'Tweets',
                 data: tweets,
@@ -580,7 +580,7 @@
                 borderWidth: 2,
                 yAxisID: 'y1',
                 fill: true
-              }
+              }*/
             ]
           },
           options: chartOptions
