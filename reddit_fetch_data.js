@@ -27,6 +27,22 @@ const getToken = async () => {
 		throw new Error(`access_token error!` + data.error);
 };
 
+const fetchRedditPostsCount = async () => {
+	const response = await fetch('https://www.reddit.com/user/'+REDDIT_USERNAME+'/submitted/new.json');
+
+	if (!response.ok) {
+		throw new Error(`HTTP error! status: ${response.status}`);
+	}
+
+	const data = await response.json();
+	console.log(data);
+
+	// Extract the metrics
+	const metrics = data?.data?.children.length;
+
+	return metrics;
+};
+
 const fetchRedditFollowerCount = async () => {
 	let token = await getToken();
   const response = await fetch('https://oauth.reddit.com/api/v1/me', {
@@ -44,7 +60,7 @@ const fetchRedditFollowerCount = async () => {
   console.log(data);
 
   // Extract the metrics
-  const metrics = {subscribers: data?.subreddit?.subscribers};
+  const metrics = {subscribers: data?.subreddit?.subscribers, posts_count: await fetchRedditPostsCount()};
 
   // Write the metrics to the environment file
   fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
