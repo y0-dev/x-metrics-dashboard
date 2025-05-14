@@ -27,8 +27,9 @@ const getToken = async () => {
 		throw new Error(`access_token error!` + data.error);
 };
 
+//https://www.reddit.com/dev/api/#GET_user_{username}_submitted
 const fetchRedditPostsCount = async (token) => {
-	const response = await fetch('https://oauth.reddit.com/user/'+REDDIT_USERNAME+'/submitted/new.json', {
+	const response = await fetch('https://oauth.reddit.com/user/me/submitted/new.json', {
 		headers: {
 			//"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
 			'Authorization': `Bearer ${token}`,
