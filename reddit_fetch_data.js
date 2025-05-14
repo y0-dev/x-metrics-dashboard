@@ -27,10 +27,11 @@ const getToken = async () => {
 		throw new Error(`access_token error!` + data.error);
 };
 
-const fetchRedditPostsCount = async () => {
+const fetchRedditPostsCount = async (token) => {
 	const response = await fetch('https://old.reddit.com/user/'+REDDIT_USERNAME+'/submitted/new.json', {
 		headers: {
 			"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
+			'Authorization': `Bearer ${token}`,
 		},
 	});
 
@@ -65,7 +66,7 @@ const fetchRedditFollowerCount = async () => {
   console.log(data);
 
   // Extract the metrics
-  const metrics = {subscribers: data?.subreddit?.subscribers, posts_count: await fetchRedditPostsCount()};
+  const metrics = {subscribers: data?.subreddit?.subscribers, posts_count: await fetchRedditPostsCount(token)};
 
   // Write the metrics to the environment file
   fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
