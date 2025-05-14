@@ -521,10 +521,11 @@
         const tfollowers = tdata.map(item => item.follower_count);
         const videos = tdata.map(item => item.video_count);
         const rfollowers = rdata.map(item => item.subscribers);
+        const posts = rdata.map(item => item.posts_count);
 
         updateStat('', followers, tweets);
         updateStat('tiktok', tfollowers, videos);
-        updateStat('reddit', rfollowers);
+        updateStat('reddit', rfollowers, posts);
 
         const minFollowers = Math.min(...followers) - 100;
         const minTweets = Math.min(...tweets) - 100;
