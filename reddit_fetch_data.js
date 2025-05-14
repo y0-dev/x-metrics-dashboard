@@ -31,11 +31,11 @@ const fetchRedditPostsCount = async () => {
 	const response = await fetch('https://www.reddit.com/user/'+REDDIT_USERNAME+'/submitted/new.json');
 
 	if (!response.ok) {
-		throw new Error(`HTTP error! status: ${response.status}`);
+		throw new Error(`HTTP error! status: ${response.status} for ${response.url}`);
 	}
 
 	const data = await response.json();
-	console.log(data);
+	//console.log(data);
 
 	// Extract the metrics
 	const metrics = data?.data?.children.length;
