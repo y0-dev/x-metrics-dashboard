@@ -64,7 +64,7 @@ const fetchRedditFollowerCount = async () => {
   }
 
   const data = await response.json();
-  console.log(data);
+  //console.log(data);
 
   // Extract the metrics
   const metrics = {subscribers: data?.subreddit?.subscribers, posts_count: await fetchRedditPostsCount(token)};

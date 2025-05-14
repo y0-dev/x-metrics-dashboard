@@ -93,7 +93,7 @@ const fetchTiktokFollowerCount = async () => {
   }
 
   const data = await response.json();
-  console.log(data);
+  //console.log(data);
 
   // Extract the metrics
   const metrics = data?.data?.user;
