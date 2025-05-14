@@ -35,7 +35,7 @@ const fetchRedditPostsCount = async () => {
 	});
 
 	if (!response.ok) {
-		console.log(response.text());
+		console.log(await response.text());
 		throw new Error(`HTTP error! status: ${response.status} for ${response.url}`);
 	}
 
