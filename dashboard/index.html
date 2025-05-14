@@ -360,18 +360,18 @@
     
     function setTheme(isDark) {
       document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      //localStorage.setItem('theme', isDark ? 'dark' : 'light');
       document.querySelector('[data-lucide="sun"]').style.display = isDark ? 'block' : 'none';
       document.querySelector('[data-lucide="moon"]').style.display = isDark ? 'none' : 'block';
     }
 
     // Initialize theme
-    const savedTheme = localStorage.getItem('theme');
+    /*const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       setTheme(savedTheme === 'dark');
-    } else {
+    } else {*/
       setTheme(prefersDark.matches);
-    }
+    //}
 
     themeToggle.addEventListener('click', () => {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
