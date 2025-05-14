@@ -1,235 +1,293 @@
 [
   {
     "date": "2025-03-17",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-03-18",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-03-19",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-03-20",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-03-21",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-03-22",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-03-23",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-03-24",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-03-25",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-03-26",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-03-27",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-03-28",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-03-29",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-03-30",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-03-31",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-04-01",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-04-02",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-04-03",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-04-04",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-04-05",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-04-06",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-04-07",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-04-08",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 0
   },
   {
     "date": "2025-04-09",
-    "subscribers": 4
+    "subscribers": 4,
+    "posts_count": 1
   },
   {
     "date": "2025-04-10",
-    "subscribers": 6
+    "subscribers": 6,
+    "posts_count": 2
   },
   {
     "date": "2025-04-11",
-    "subscribers": 6
+    "subscribers": 6,
+    "posts_count": 2
   },
   {
     "date": "2025-04-12",
-    "subscribers": 6
+    "subscribers": 6,
+    "posts_count": 2
   },
   {
     "date": "2025-04-13",
-    "subscribers": 6
+    "subscribers": 6,
+    "posts_count": 2
   },
   {
     "date": "2025-04-14",
-    "subscribers": 6
+    "subscribers": 6,
+    "posts_count": 2
   },
   {
     "date": "2025-04-15",
-    "subscribers": 6
+    "subscribers": 6,
+    "posts_count": 2
   },
   {
     "date": "2025-04-16",
-    "subscribers": 6
+    "subscribers": 6,
+    "posts_count": 2
   },
   {
     "date": "2025-04-17",
-    "subscribers": 28
+    "subscribers": 28,
+    "posts_count": 3
   },
   {
     "date": "2025-04-18",
-    "subscribers": 32
+    "subscribers": 32,
+    "posts_count": 3
   },
   {
     "date": "2025-04-19",
-    "subscribers": 34
+    "subscribers": 34,
+    "posts_count": 3
   },
   {
     "date": "2025-04-20",
-    "subscribers": 36
+    "subscribers": 36,
+    "posts_count": 3
   },
   {
     "date": "2025-04-21",
-    "subscribers": 38
+    "subscribers": 38,
+    "posts_count": 3
   },
   {
     "date": "2025-04-22",
-    "subscribers": 41
+    "subscribers": 41,
+    "posts_count": 3
   },
   {
     "date": "2025-04-23",
-    "subscribers": 42
+    "subscribers": 42,
+    "posts_count": 4
   },
   {
     "date": "2025-04-24",
-    "subscribers": 43
+    "subscribers": 43,
+    "posts_count": 4
   },
   {
     "date": "2025-04-25",
-    "subscribers": 46
+    "subscribers": 46,
+    "posts_count": 4
   },
   {
     "date": "2025-04-26",
-    "subscribers": 46
+    "subscribers": 46,
+    "posts_count": 4
   },
   {
     "date": "2025-04-27",
-    "subscribers": 46
+    "subscribers": 46,
+    "posts_count": 4
   },
   {
     "date": "2025-04-28",
-    "subscribers": 46
+    "subscribers": 46,
+    "posts_count": 4
   },
   {
     "date": "2025-04-29",
-    "subscribers": 46
+    "subscribers": 46,
+    "posts_count": 4
   },
   {
     "date": "2025-04-30",
-    "subscribers": 46
+    "subscribers": 46,
+    "posts_count": 4
   },
   {
     "date": "2025-05-01",
-    "subscribers": 47
+    "subscribers": 47,
+    "posts_count": 4
   },
   {
     "date": "2025-05-02",
-    "subscribers": 47
+    "subscribers": 47,
+    "posts_count": 4
   },
   {
     "date": "2025-05-03",
-    "subscribers": 47
+    "subscribers": 47,
+    "posts_count": 4
   },
   {
     "date": "2025-05-04",
-    "subscribers": 47
+    "subscribers": 47,
+    "posts_count": 4
   },
   {
     "date": "2025-05-05",
-    "subscribers": 47
+    "subscribers": 47,
+    "posts_count": 4
   },
   {
     "date": "2025-05-06",
-    "subscribers": 47
+    "subscribers": 47,
+    "posts_count": 4
   },
   {
     "date": "2025-05-07",
-    "subscribers": 47
+    "subscribers": 47,
+    "posts_count": 4
   },
   {
     "date": "2025-05-08",
-    "subscribers": 47
+    "subscribers": 47,
+    "posts_count": 4
   },
   {
     "date": "2025-05-09",
-    "subscribers": 47
+    "subscribers": 47,
+    "posts_count": 4
   },
   {
     "date": "2025-05-10",
-    "subscribers": 48
+    "subscribers": 48,
+    "posts_count": 4
   },
   {
     "date": "2025-05-11",
-    "subscribers": 48
+    "subscribers": 48,
+    "posts_count": 4
   },
   {
     "date": "2025-05-12",
-    "subscribers": 48
+    "subscribers": 48,
+    "posts_count": 4
   },
   {
     "date": "2025-05-13",
-    "subscribers": 48
+    "subscribers": 48,
+    "posts_count": 4
   },
   {
     "date": "2025-05-14",
