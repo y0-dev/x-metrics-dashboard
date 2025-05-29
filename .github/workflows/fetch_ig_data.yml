@@ -1,0 +1,49 @@
+name: Fetch IG Data
+
+on:
+  schedule:
+    # Runs at 4 AM UTC (5 AM in Poland during Standard Time)
+    - cron: '0 4 * * *'
+  workflow_dispatch: # This line enables manual triggering of the action
+
+jobs:
+  fetch_data:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install instaloader
+
+      - name: Install dependencies 2
+        run: pip install json
+
+      - name: Fetch Data from Platform IG
+        id: fetch_data
+        run: python ig_fetch_data.py
+        env:
+          USERNAME: ${{ secrets.REDDIT_USERNAME }}
+
+      - name: Save data
+        run: node ig_save_data.js
+        env:
+          METRICS: ${{ steps.fetch_data.outputs.METRICS }}
+
+      - name: Commit and push if there's changes
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add data/ig.json
+          git commit -m "Update data for Platform IG" || exit 0  # exit 0 if no changes
+          git push
