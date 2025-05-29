@@ -26,9 +26,6 @@ jobs:
       - name: Install dependencies
         run: pip install instaloader
 
-      - name: Install dependencies 2
-        run: pip install json
-
       - name: Fetch Data from Platform IG
         id: fetch_data
         run: python ig_fetch_data.py
