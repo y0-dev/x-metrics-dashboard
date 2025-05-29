@@ -352,5 +352,95 @@
     "follower_count": 263,
     "likes_count": 1838,
     "video_count": 30
+  },
+  {
+    "date": "2025-05-15",
+    "follower_count": 264,
+    "likes_count": 1853,
+    "video_count": 30
+  },
+  {
+    "date": "2025-05-16",
+    "follower_count": 266,
+    "likes_count": 1859,
+    "video_count": 30
+  },
+  {
+    "date": "2025-05-17",
+    "follower_count": 265,
+    "likes_count": 1864,
+    "video_count": 30
+  },
+  {
+    "date": "2025-05-18",
+    "follower_count": 266,
+    "likes_count": 1875,
+    "video_count": 30
+  },
+  {
+    "date": "2025-05-19",
+    "follower_count": 267,
+    "likes_count": 1879,
+    "video_count": 30
+  },
+  {
+    "date": "2025-05-20",
+    "follower_count": 269,
+    "likes_count": 1883,
+    "video_count": 30
+  },
+  {
+    "date": "2025-05-21",
+    "follower_count": 270,
+    "likes_count": 1886,
+    "video_count": 30
+  },
+  {
+    "date": "2025-05-22",
+    "follower_count": 315,
+    "likes_count": 2211,
+    "video_count": 31
+  },
+  {
+    "date": "2025-05-23",
+    "likes_count": 2341,
+    "video_count": 31,
+    "follower_count": 332
+  },
+  {
+    "date": "2025-05-24",
+    "follower_count": 330,
+    "likes_count": 2347,
+    "video_count": 31
+  },
+  {
+    "date": "2025-05-25",
+    "video_count": 31,
+    "follower_count": 331,
+    "likes_count": 2356
+  },
+  {
+    "date": "2025-05-26",
+    "follower_count": 331,
+    "likes_count": 2363,
+    "video_count": 31
+  },
+  {
+    "date": "2025-05-27",
+    "follower_count": 333,
+    "likes_count": 2366,
+    "video_count": 31
+  },
+  {
+    "date": "2025-05-28",
+    "video_count": 31,
+    "follower_count": 336,
+    "likes_count": 2372
+  },
+  {
+    "date": "2025-05-29",
+    "follower_count": 336,
+    "likes_count": 2373,
+    "video_count": 30
   }
 ]
