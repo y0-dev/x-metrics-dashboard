@@ -18,6 +18,7 @@
       --border-color: #e2e8f0;
       --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
       --positive: #22c55e;
+      --neutral: #2269c5;
       --negative: #ef4444;
     }
 
@@ -128,6 +129,10 @@
 
     .positive-change {
       color: var(--positive);
+    }
+
+    .neutral-change {
+      color: var(--neutral);
     }
 
     .negative-change {
@@ -451,6 +456,10 @@
         }
       }*/
     };
+
+    function getColor(n) {
+      return n == 0 ? 'neutral-change' : (n > 0 ? 'positive-change' : 'negative-change');
+    }
 	
 	function updateStat(name, followers, tweets = false) {
       var currentTweets, previousTweets, tweetsDiff, weekAgoTweets, tweetsWeekDiff;
@@ -481,11 +490,11 @@
         document.getElementById('followersChange'+name).innerHTML = 
           createChangeHTML(followersDiff, 'yesterday');
         document.getElementById('followersChange'+name).className = 
-          `change ${followersDiff >= 0 ? 'positive-change' : 'negative-change'}`;
+          `change ${getColor(followersDiff)}`;
         document.getElementById('followersWeekChange'+name).innerHTML = 
           createChangeHTML(followersWeekDiff, 'last week');
         document.getElementById('followersWeekChange'+name).className = 
-          `change ${followersWeekDiff >= 0 ? 'positive-change' : 'negative-change'}`;
+          `change ${getColor(followersWeekDiff)}`;
 
       if (tweets) {
         document.getElementById('currentTweets' + name).textContent =
@@ -493,11 +502,11 @@
         document.getElementById('tweetsChange' + name).innerHTML =
                 createChangeHTML(tweetsDiff, 'yesterday');
         document.getElementById('tweetsChange' + name).className =
-                `change ${tweetsDiff >= 0 ? 'positive-change' : 'negative-change'}`;
+                `change ${getColor(tweetsDiff)}`;
         document.getElementById('tweetsWeekChange' + name).innerHTML =
                 createChangeHTML(tweetsWeekDiff, 'last week');
         document.getElementById('tweetsWeekChange' + name).className =
-                `change ${tweetsWeekDiff >= 0 ? 'positive-change' : 'negative-change'}`;
+                `change ${getColor(tweetsWeekDiff)}`;
       }
 	}
 
