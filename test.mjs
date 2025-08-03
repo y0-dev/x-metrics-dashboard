@@ -33,7 +33,7 @@ describe('search', async function () {
 
         var FanCountN = 0;
 
-        try {
+        //try {
             const filename = "test"
                 .replace(/['"]+/g, '')
                 .replace(/[^a-z0-9]/gi, '_')
@@ -41,12 +41,13 @@ describe('search', async function () {
             const encodedString = await driver.takeScreenshot();
             await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
 
-            //await driver.wait(until.elementLocated(By.xpath('(//span[@class="b-profile__sections__count g-semibold"])[1]')));
+            await driver.wait(until.elementLocated(By.xpath('(//span[@class="b-profile__sections__count g-semibold"])[1]')));
             //console.log("getting fan count");
             const FanCount = await driver.findElement(By.xpath('(//span[@class="b-profile__sections__count g-semibold"])[1]'));
             console.log("getting fan count");
             FanCountN = FanCount.text();
-        } catch (e) {
+            console.log(FanCountN);
+        /*} catch (e) {
             const filename = "test"
                 .replace(/['"]+/g, '')
                 .replace(/[^a-z0-9]/gi, '_')
@@ -54,7 +55,7 @@ describe('search', async function () {
             const encodedString = await driver.takeScreenshot();
             await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
             return '2';
-        }
+        }*/
 
         // Return page content
         return FanCountN;
