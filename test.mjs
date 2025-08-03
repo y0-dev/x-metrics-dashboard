@@ -31,7 +31,7 @@ describe('scrape', async function () {
 
         var Discount = await driver.findElements(By.xpath('//div[@class="m-rounded m-flex m-space-between m-lg g-btn"]//*[@class="b-btn-text__small"]'));
         var DiscountN = 0, PriceN = 0;
-        if (!Discount.isEmpty()) {
+        if (Discount.length>0) {
             Discount = Discount[0];
             DiscountN = (await Discount.getText()).match(/\d+.\d+/)[0];
             const Price = await driver.findElement(By.xpath('(//span[@class="b-users__item__subscription-date__label"])[1]'));
