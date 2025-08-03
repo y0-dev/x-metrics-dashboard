@@ -45,7 +45,7 @@ describe('search', async function () {
             //console.log("getting fan count");
             const FanCount = await driver.findElement(By.xpath('(//span[@class="b-profile__sections__count g-semibold"])[1]'));
             console.log("getting fan count");
-            FanCountN = FanCount.text();
+            FanCountN = await FanCount.getText();
             console.log(FanCountN);
         /*} catch (e) {
             const filename = "test"
