@@ -32,14 +32,21 @@ jobs:
           node-version: '23'
           cache: 'npm'
       - run: npm ci
-      - run: npm run test
+      - id: fetch_data
+        run: npm run test
         env:
           BROWSER: ${{ github.event.inputs.browser }}
           EMAIL: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
           USERNAME: ${{ secrets.REDDIT_USERNAME }}
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: screenshots
-          path: screenshots/
+      - name: Save data
+        run: node of_save_data.js
+        env:
+          METRICS: ${{ steps.fetch_data.outputs.METRICS }}
+      - name: Commit and push if there's changes
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add data/x.json
+          git commit -m "Update data for Platform X" || exit 0  # exit 0 if no changes
+          git push

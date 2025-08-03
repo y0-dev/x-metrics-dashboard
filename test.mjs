@@ -1,24 +1,13 @@
-import { Builder, By, Key, until } from 'selenium-webdriver';
-import {FlutterSeleniumBridge} from "@rentready/flutter-selenium-bridge";
+import { Builder, By, until } from 'selenium-webdriver';
 import { assert } from 'chai';
 import * as fs from 'fs';
 
-describe('search', async function () {
+describe('scrape', async function () {
     this.timeout(20000);
     let driver;
 
-    if (!fs.existsSync('./screenshots')) {
-        fs.mkdirSync('./screenshots');
-    }
-
-    const delay = ms => new Promise(res => setTimeout(res, ms));
-
-    // A helper function to start a web search
-    const search = async () => {
-        // Automate DuckDuckGo search
-        const bridge = new FlutterSeleniumBridge(driver);
+    const scrape = async () => {
         await driver.get('https://onlyfans.com/'+process.env.USERNAME);
-        //await bridge.enableAccessibility();//Attempt to click on "EnableAccessibility" button failed. Retrying... => je pense qu'OF on désactivé ce mode de dev
 
         // Wait until the result page is loaded
         await driver.wait(until.elementLocated(By.css('*[data-icon-name="icon-back"]')));
@@ -31,33 +20,42 @@ describe('search', async function () {
         //    throw new Error('Cloudflare: You are not human');
         //else throw new Error(source);
 
-        var FanCountN = 0;
+        const PicCount = await driver.findElement(By.xpath('(//span[@class="b-profile__sections__count g-semibold"])[1]'));
+        const PicCountN = await PicCount.getText();
+        const VideoCount = await driver.findElement(By.xpath('(//span[@class="b-profile__sections__count g-semibold"])[2]'));
+        const VideoCountN = await VideoCount.getText();
+        const LikeCount = await driver.findElement(By.xpath('(//span[@class="b-profile__sections__count g-semibold"])[3]'));
+        const LikeCountN = await LikeCount.getText();
+        const FanCount = await driver.findElement(By.xpath('(//span[@class="b-profile__sections__count g-semibold"])[4]'));
+        const FanCountN = await FanCount.getText();
 
-        //try {
-            const filename = "test"
-                .replace(/['"]+/g, '')
-                .replace(/[^a-z0-9]/gi, '_')
-                .toLowerCase();
-            const encodedString = await driver.takeScreenshot();
-            await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
+        const Discount = await driver.findElement(By.xpath('//div[@class="m-fluid-width m-rounded m-flex m-space-between m-lg g-btn"]//*[@class="b-btn-text__small"]'));
+        var DiscountN = 0, PriceN = 0;
+        if (Discount) {
+            DiscountN = (await Discount.getText()).match(/\d+.\d+/)[0];
+            const Price = await driver.findElement(By.xpath('(//span[@class="b-users__item__subscription-date__label"])[1]'));
+            PriceN = (await Price.getText()).match(/\d+.\d+/)[0];
+        } else {
+            const Price = await driver.findElement(By.xpath('//div[@class="m-rounded m-flex m-space-between m-lg g-btn"]//*[@class="b-btn-text__small"]'));
+            PriceN = (await Price.getText()).match(/\d+.\d+/)[0];
+            DiscountN = PriceN;
+        }
 
-            await driver.wait(until.elementLocated(By.xpath('(//span[@class="b-profile__sections__count g-semibold"])[1]')));
-            //console.log("getting fan count");
-            const FanCount = await driver.findElement(By.xpath('(//span[@class="b-profile__sections__count g-semibold"])[1]'));
-            console.log("getting fan count");
-            FanCountN = await FanCount.getText();
-            console.log(FanCountN);
-        /*} catch (e) {
-            const filename = "test"
-                .replace(/['"]+/g, '')
-                .replace(/[^a-z0-9]/gi, '_')
-                .toLowerCase();
-            const encodedString = await driver.takeScreenshot();
-            await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
-            return '2';
-        }*/
 
-        // Return page content
+        // Extract the metrics
+        const metrics = {
+            "followers_count": FanCountN,
+            "following_count": 1,
+            "picture_count": PicCountN,
+            "video_count": VideoCountN,
+            "like_count": LikeCountN,
+            "price": PriceN,
+            "discount": DiscountN
+        };
+
+        // Write the metrics to the environment file
+        fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
+
         return FanCountN;
     };
 
@@ -90,23 +88,14 @@ describe('search', async function () {
     // After each test, take a screenshot and close the browser
     afterEach(async function () {
         if (driver) {
-            // Take a screenshot of the result page
-            /*const filename = this.currentTest.fullTitle()
-                .replace(/['"]+/g, '')
-                .replace(/[^a-z0-9]/gi, '_')
-                .toLowerCase();;
-            const encodedString = await driver.takeScreenshot();
-            await fs.writeFileSync(`./screenshots/${filename}.png`,
-                encodedString, 'base64');*/
-
             // Close the browser
             await driver.quit();
         }
     });
 
     // Our test definitions
-    it('should search for "2"', async function () {
-        const content = await search();
-        assert.isTrue(content.includes('2'));
+    it('scrape', async function () {
+        const content = await scrape();
+        assert.isNotEmpty(content);
     });
 });
