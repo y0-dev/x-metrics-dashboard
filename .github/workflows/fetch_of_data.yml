@@ -1,4 +1,4 @@
-name: Test (single)
+name: Fetch OF Data
 
 on:
   workflow_dispatch:
@@ -13,9 +13,12 @@ on:
           - edge
 
 jobs:
-  test:
-    name: Test
+  fetch_data:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
 
     container:
       image: node:23
