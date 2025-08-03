@@ -275,6 +275,29 @@
       Terms of Service
     </a>
   </div>
+
+  <div class="dashboard-header"><h2>OF</h2></div>
+
+  <div class="stats-container">
+    <div class="current-stats">
+      <div class="stat-title">
+        <i data-lucide="users" class="icon"></i>
+        Total Followers
+      </div>
+      <div class="stat-value" id="currentFollowersof">Loading...</div>
+      <div class="change" id="followersChangeof"></div>
+      <div class="change" id="followersWeekChangeof"></div>
+    </div>
+    <div class="current-stats">
+      <div class="stat-title">
+        <i data-lucide="message-square" class="icon"></i>
+        Total Posts
+      </div>
+      <div class="stat-value" id="currentTweetsof">Loading...</div>
+      <div class="change" id="tweetsChangeof"></div>
+      <div class="change" id="tweetsWeekChangeof"></div>
+    </div>
+  </div>
   
   <div class="dashboard-header"><h2>X</h2></div>
 
@@ -510,6 +533,9 @@
       }
 	}
 
+    fetch('data/of.json')
+            .then(tresponse => tresponse.json())
+            .then(ofdata => {
     fetch('data/reddit.json')
             .then(tresponse => tresponse.json())
             .then(rdata => {
@@ -531,10 +557,13 @@
         const videos = tdata.map(item => item.video_count);
         const rfollowers = rdata.map(item => item.subscribers);
         const posts = rdata.map(item => item.posts_count);
+        const offollowers = ofdata.map(item => item.followers_count);
+        const ofppsts = ofdata.map(item => item.picture_count+item.video_count);
 
         updateStat('', followers, tweets);
         updateStat('tiktok', tfollowers, videos);
         updateStat('reddit', rfollowers, posts);
+        updateStat('of', offollowers, ofppsts);
 
         const minFollowers = Math.min(...followers) - 100;
         const minTweets = Math.min(...tweets) - 100;
@@ -572,6 +601,15 @@
                 borderWidth: 2,
                 yAxisID: 'y',
                 fill: true
+              },
+              {
+                label: 'Followers OF',
+                data: offollowers,
+                backgroundColor: 'rgba(54,233,14,0.2)',
+                borderColor: 'rgb(43,233,14)',
+                borderWidth: 2,
+                yAxisID: 'y',
+                fill: true
               }/*,
               {
                 label: 'Tweets',
@@ -598,7 +636,7 @@
 
         // Remove loading states
         document.querySelectorAll('.loading').forEach(el => el.classList.remove('loading'));
-      });});});
+      });});});});
 
     // Add window resize handler
     window.addEventListener('resize', () => {
