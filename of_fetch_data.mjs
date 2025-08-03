@@ -45,13 +45,13 @@ describe('scrape', async function () {
 
         // Extract the metrics
         const metrics = {
-            "followers_count": FanCountN,
+            "followers_count": parseInt(FanCountN),
             "following_count": 1,
-            "picture_count": PicCountN,
-            "video_count": VideoCountN,
-            "like_count": LikeCountN,
-            "price": PriceN,
-            "discount": DiscountN
+            "picture_count": parseInt(PicCountN),
+            "video_count": parseInt(VideoCountN),
+            "like_count": parseInt(LikeCountN),
+            "price": parseFloat(PriceN),
+            "discount": parseFloat(DiscountN)
         };
 
         // Write the metrics to the environment file

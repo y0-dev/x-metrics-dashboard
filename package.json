@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx mocha test.mjs"
+    "test": "npx mocha of_fetch_data.mjs"
   },
   "devDependencies": {
     "@rentready/flutter-selenium-bridge": "^1.0.5",

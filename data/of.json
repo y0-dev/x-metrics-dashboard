@@ -1,12 +1,1322 @@
 [
   {
-    "date": "2025-08-03",
-    "followers_count": "5",
+    "date": "2025-03-25",
+    "followers_count": 0,
     "following_count": 1,
-    "picture_count": "9",
-    "video_count": "15",
-    "like_count": "4",
-    "price": "7.99",
-    "discount": "7.99"
+    "picture_count": 1,
+    "video_count": 1,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-03-26",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 1,
+    "video_count": 1,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-03-27",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 1,
+    "video_count": 2,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-03-28",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 1,
+    "video_count": 2,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-03-29",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 1,
+    "video_count": 3,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-03-30",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 1,
+    "video_count": 3,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-03-31",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 3,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-01",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 3,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-02",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 3,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-03",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 4,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-04",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 4,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-05",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 5,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-06",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 5,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-07",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 6,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-08",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 6,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-09",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 6,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-10",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 6,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-11",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 6,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-12",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 6,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-13",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 6,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-14",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 6,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-15",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 6,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-16",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 6,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-17",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 7,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-18",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 7,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-19",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 7,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-20",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 7,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-21",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 7,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-22",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 7,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-23",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 8,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-24",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 8,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-25",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-26",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-27",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-28",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-29",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-04-30",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-01",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-02",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-03",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-04",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-05",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-06",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-07",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-08",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-09",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-10",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-11",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-12",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 9,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-13",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-14",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-15",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-16",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-17",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-18",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-19",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-20",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-21",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-22",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-23",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-24",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 4,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-25",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-26",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-27",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-28",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-29",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-30",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-05-31",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-01",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-02",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 10,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-03",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-04",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-05",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-06",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-07",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-08",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-09",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-10",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-11",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-12",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-13",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-14",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-15",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-16",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-17",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-18",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-19",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-20",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-21",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-22",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-23",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-24",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-25",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 11,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-26",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 12,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-27",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 12,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-28",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-29",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-06-30",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-01",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-02",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-03",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-04",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-05",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-06",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-07",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-08",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-09",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-10",
+    "followers_count": 0,
+    "following_count": 1,
+    "picture_count": 6,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-11",
+    "followers_count": 1,
+    "following_count": 1,
+    "picture_count": 8,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-12",
+    "followers_count": 1,
+    "following_count": 1,
+    "picture_count": 8,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-13",
+    "followers_count": 1,
+    "following_count": 1,
+    "picture_count": 8,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-14",
+    "followers_count": 3,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-15",
+    "followers_count": 3,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-16",
+    "followers_count": 3,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-17",
+    "followers_count": 3,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-18",
+    "followers_count": 3,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-19",
+    "followers_count": 3,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-20",
+    "followers_count": 3,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-21",
+    "followers_count": 3,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-22",
+    "followers_count": 4,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-23",
+    "followers_count": 5,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 13,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-24",
+    "followers_count": 5,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 14,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-25",
+    "followers_count": 5,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 14,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-26",
+    "followers_count": 5,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 14,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-27",
+    "followers_count": 5,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 14,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-28",
+    "followers_count": 5,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 14,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-29",
+    "followers_count": 5,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 14,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-30",
+    "followers_count": 5,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 14,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-07-31",
+    "followers_count": 5,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 14,
+    "like_count": 0,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-08-01",
+    "followers_count": 5,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 14,
+    "like_count": 4,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-08-02",
+    "followers_count": 5,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 15,
+    "like_count": 4,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2025-08-03",
+    "followers_count": 5,
+    "following_count": 1,
+    "picture_count": 9,
+    "video_count": 15,
+    "like_count": 4,
+    "price": 7.99,
+    "discount": 7.99
   }
 ]

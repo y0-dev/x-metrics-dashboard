@@ -558,12 +558,12 @@
         const rfollowers = rdata.map(item => item.subscribers);
         const posts = rdata.map(item => item.posts_count);
         const offollowers = ofdata.map(item => item.followers_count);
-        const ofppsts = ofdata.map(item => item.picture_count+item.video_count);
+        const ofposts = ofdata.map(item => item.picture_count+item.video_count);
 
         updateStat('', followers, tweets);
         updateStat('tiktok', tfollowers, videos);
         updateStat('reddit', rfollowers, posts);
-        updateStat('of', offollowers, ofppsts);
+        updateStat('of', offollowers, ofposts);
 
         const minFollowers = Math.min(...followers) - 100;
         const minTweets = Math.min(...tweets) - 100;
