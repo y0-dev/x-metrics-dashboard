@@ -2,10 +2,12 @@ require('dotenv').config();
 const fs = require('fs');
 
 const fetchRedditFollowerCount = async () => {
-  const response = await fetch('https://www.instagram.com/'+process.env.USERNAME+'/');
+  const response = await fetch('https://www.instagram.com/'+process.env.USERNAME+'/', {
+    headers: {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0",}
+  });
 
   if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+    throw new Error(`HTTP error! status: ${response.status}`);//TODO 429 Too Many Requests
   }
 
   const html = await response.text();
