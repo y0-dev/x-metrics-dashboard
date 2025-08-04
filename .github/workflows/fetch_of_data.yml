@@ -3,7 +3,7 @@ name: Fetch OF Data
 on:
   schedule:
     # Runs at 4 AM UTC (5 AM in Poland during Standard Time)
-    - cron: '0 4 * * *'
+    - cron: '0 8 * * *'
   workflow_dispatch:
     inputs:
       browser:
@@ -43,7 +43,7 @@ jobs:
       - id: fetch_data
         run: npm run test
         env:
-          BROWSER: ${{ github.event.inputs.browser }}
+          BROWSER: ${{ github.event.inputs.browser || 'chrome' }}
           EMAIL: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
           USERNAME: ${{ secrets.REDDIT_USERNAME }}
