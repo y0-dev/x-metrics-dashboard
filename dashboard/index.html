@@ -685,7 +685,7 @@
 
     // Update the change display code to include trending icons
     const createChangeHTML = (value, period) => {
-      const icon = value >= 0 ? 'trending-up' : 'trending-down';
+      const icon = value == 0 ? 'minus' : (value > 0 ? 'trending-up' : 'trending-down');
       return `<i data-lucide="${icon}" class="icon"></i>${value >= 0 ? '+' : ''}${value.toLocaleString()} since ${period}`;
     };
 	
