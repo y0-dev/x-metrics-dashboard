@@ -4,7 +4,12 @@ const randomUseragent = require('random-useragent');
 
 const fetchRedditFollowerCount = async () => {
   const response = await fetch('https://www.instagram.com/'+process.env.USERNAME+'/', {
-    headers: {"User-Agent": randomUseragent.getRandom(),}
+    headers: {
+      'Accept': '*/*',
+      'Accept-Encoding': 'gzip, deflate, br',
+      'Connection': 'keep-alive',
+      'User-Agent': randomUseragent.getRandom(),
+    }
   });
 
   if (!response.ok) {
