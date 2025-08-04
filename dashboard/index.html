@@ -372,16 +372,23 @@
     <div class="chart-header">
       <h2>
         <i data-lucide="line-chart" class="icon"></i>
-        Metrics Overview
+        Followers Overview
       </h2>
     </div>
     <canvas id="metricsChart"></canvas>
   </div>
 
-  <script>
-    // Initialize all icons
-    lucide.createIcons();
+  <div class="chart-section">
+    <div class="chart-header">
+      <h2>
+        <i data-lucide="line-chart" class="icon"></i>
+        Price Overview
+      </h2>
+    </div>
+    <canvas id="priceChart"></canvas>
+  </div>
 
+  <script>
     // Theme toggling
     const themeToggle = document.getElementById('themeToggle');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
@@ -559,14 +566,16 @@
         const posts = rdata.map(item => item.posts_count);
         const offollowers = ofdata.map(item => item.followers_count);
         const ofposts = ofdata.map(item => item.picture_count+item.video_count);
+        const prices = ofdata.map(item => item.price);
+        const dprices = ofdata.map(item => item.discount);
 
         updateStat('', followers, tweets);
         updateStat('tiktok', tfollowers, videos);
         updateStat('reddit', rfollowers, posts);
         updateStat('of', offollowers, ofposts);
 
-        const minFollowers = Math.min(...followers) - 100;
-        const minTweets = Math.min(...tweets) - 100;
+        //const minFollowers = Math.min(...followers) - 100;
+        //const minTweets = Math.min(...tweets) - 100;
 
         const ctx = document.getElementById('metricsChart').getContext('2d');
 
@@ -633,6 +642,37 @@
           },
           options: chartOptions
         });
+
+        const ctx2 = document.getElementById('priceChart').getContext('2d');
+
+        metricsChart = new Chart(ctx2, {
+          type: 'line',
+          data: {
+            labels: dates,
+            datasets: [
+              {
+                label: 'Price',
+                data: prices,
+                backgroundColor: 'rgba(14, 165, 233, 0.2)',
+                borderColor: 'rgb(14, 165, 233)',
+                borderWidth: 2,
+                yAxisID: 'y'
+              },
+              {
+                label: 'Discounted price',
+                data: dprices,
+                backgroundColor: 'rgba(255, 87, 34, 0.2)',
+                borderColor: 'rgb(255, 87, 34)',
+                borderWidth: 2,
+                yAxisID: 'y'
+              }
+            ]
+          },
+          options: chartOptions
+        });
+
+        // Initialize all icons
+        lucide.createIcons();
 
         // Remove loading states
         document.querySelectorAll('.loading').forEach(el => el.classList.remove('loading'));
