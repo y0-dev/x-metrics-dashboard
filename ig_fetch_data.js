@@ -3,6 +3,7 @@ const fs = require('fs');
 const randomUseragent = require('random-useragent');
 
 const fetchRedditFollowerCount = async () => {
+  console.log('getting https://www.instagram.com/'+process.env.USERNAME+'/');
   const response = await fetch('https://www.instagram.com/'+process.env.USERNAME+'/', {
     headers: {
       'Accept': '*/*',
@@ -27,7 +28,7 @@ const fetchRedditFollowerCount = async () => {
 
     // Write the metrics to the environment file
     fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
-  } else console.log(html);
+  } else console.log(html);//TODO login requirement
 };
 
 fetchRedditFollowerCount().catch(err => console.error(err));
