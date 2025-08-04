@@ -1,9 +1,9 @@
 name: Fetch IG Data
 
 on:
-  #schedule:
-  #  # Runs at 4 AM UTC (5 AM in Poland during Standard Time)
-  #  - cron: '0 4 * * *'
+  schedule:
+    # Runs at 4 AM UTC (5 AM in Poland during Standard Time)
+    - cron: '0 4 * * *'
   workflow_dispatch: # This line enables manual triggering of the action
 
 jobs:
@@ -18,17 +18,17 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.x'
+          node-version: "20"
 
       - name: Install dependencies
-        run: pip install instaloader
+        run: npm install
 
       - name: Fetch Data from Platform IG
         id: fetch_data
-        run: python ig_fetch_data.py
+        run: node ig_fetch_data.js
         env:
           USERNAME: ${{ secrets.REDDIT_USERNAME }}
 

@@ -41,7 +41,7 @@ jobs:
       - run: npm ci
 
       - id: fetch_data
-        run: npm run test
+        run: npm run of_fetch_data
         env:
           BROWSER: ${{ github.event.inputs.browser || 'chrome' }}
           EMAIL: ${{ secrets.EMAIL }}
