@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx mocha of_fetch_data.mjs"
+    "of_fetch_data": "npx mocha of_fetch_data.mjs"
   },
   "devDependencies": {
     "@rentready/flutter-selenium-bridge": "^1.0.5",
@@ -20,6 +20,7 @@
     "dotenv": "^16.4.1",
     "libsodium-wrappers": "^0.7.15",
     "oauth-1.0a": "^2.2.6",
-    "open": "^10.0.3"
+    "open": "^10.0.3",
+    "random-useragent": "^0.5.0"
   }
 }
