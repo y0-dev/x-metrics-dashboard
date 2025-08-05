@@ -8,7 +8,9 @@ const fetchRedditFollowerCount = async () => {
       'Accept': '*/*',
       'Accept-Encoding': 'gzip, deflate, br',
       'Connection': 'keep-alive',
-      'User-Agent': randomUseragent.getRandom(),
+      'User-Agent': "Instagram 76.0.0.15.395 Android (24/7.0; 640dpi; 1440x2560; samsung; SM-G930F; herolte; samsungexynos8890; en_US; 138226743)",
+      'Origin': 'https://www.instagram.com',
+      'Referer': 'https://www.instagram.com',
     }
   });
 
@@ -16,14 +18,14 @@ const fetchRedditFollowerCount = async () => {
     throw new Error(`HTTP error! status: ${response.status}`);//TODO 429 Too Many Requests
   }
 
-  const html = await response.text();
-  var des = html.match(/<meta property="og:description" content="(.*?)"/);
-  if(des){
-    des = [1].replace(/&[#A-Za-z0-9]+;/gi, '');
-    const numbers = des.match(/\d+/g);
+  const data = await response.json();
 
     // Extract the metrics
-    const metrics = {followers_count: parseInt(numbers[0]), following_count: parseInt(numbers[1]), posts_count: parseInt(numbers[2])};
+    const metrics = {
+        followers_count: data.data.user.edge_followed_by.count,
+        following_count: data.data.user.edge_follow.count,
+        posts_count: data.data.user.edge_owner_to_timeline_media.count
+    };
 
     // Write the metrics to the environment file
     fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
