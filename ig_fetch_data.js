@@ -22,8 +22,6 @@ const fetchRedditFollowerCount = async () => {
     throw new Error(`HTTP error! status: ${response.status}`);//TODO 429 Too Many Requests
   }
 
-  const html = await response.text();
-  if (!html.startsWith('<!DOCTYPE')) {
   const data = await response.json();
 
     // Extract the metrics
@@ -35,7 +33,6 @@ const fetchRedditFollowerCount = async () => {
 
     // Write the metrics to the environment file
     fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
-  } else console.log(html);//TODO login requirement=>quoi faire??
 };
 
 fetchRedditFollowerCount().catch(err => console.error(err));
