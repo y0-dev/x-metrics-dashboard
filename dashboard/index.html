@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>📊</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22></text></svg>">
   <title>X Metrics Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="sodium.js"></script>
@@ -368,6 +369,29 @@
     </div>
   </div>
 
+  <div class="dashboard-header"><h2>IG</h2></div>
+
+  <div class="stats-container">
+      <div class="current-stats">
+          <div class="stat-title">
+              <i data-lucide="users" class="icon"></i>
+              Total Followers
+          </div>
+          <div class="stat-value" id="currentFollowersig">Loading...</div>
+          <div class="change" id="followersChangeig"></div>
+          <div class="change" id="followersWeekChangeig"></div>
+      </div>
+      <div class="current-stats">
+          <div class="stat-title">
+              <i data-lucide="message-square" class="icon"></i>
+              Total Posts
+          </div>
+          <div class="stat-value" id="currentTweetsig">Loading...</div>
+          <div class="change" id="tweetsChangeig"></div>
+          <div class="change" id="tweetsWeekChangeig"></div>
+      </div>
+  </div>
+
   <div class="chart-section">
     <div class="chart-header">
       <h2>
@@ -540,6 +564,9 @@
       }
 	}
 
+    fetch('data/ig.json')
+        .then(tresponse => tresponse.json())
+        .then(igdata => {
     fetch('data/of.json')
             .then(tresponse => tresponse.json())
             .then(ofdata => {
@@ -566,6 +593,9 @@
         const posts = rdata.map(item => item.posts_count);
         const offollowers = ofdata.map(item => item.followers_count);
         const ofposts = ofdata.map(item => item.picture_count+item.video_count);
+        const igfollowers = igdata.map(item => item.followers_count);
+        const igposts = igdata.map(item => item.posts_count);
+
         const prices = ofdata.map(item => item.price);
         const dprices = ofdata.map(item => item.discount);
 
@@ -573,6 +603,7 @@
         updateStat('tiktok', tfollowers, videos);
         updateStat('reddit', rfollowers, posts);
         updateStat('of', offollowers, ofposts);
+        updateStat('ig', igfollowers, igposts);
 
         //const minFollowers = Math.min(...followers) - 100;
         //const minTweets = Math.min(...tweets) - 100;
@@ -619,7 +650,16 @@
                 borderWidth: 2,
                 yAxisID: 'y',
                 fill: true
-              }/*,
+              },
+                {
+                    label: 'Followers IG',
+                    data: igfollowers,
+                    backgroundColor: 'rgba(246,242,6,0.2)',
+                    borderColor: 'rgb(255,242,0)',
+                    borderWidth: 2,
+                    yAxisID: 'y',
+                    fill: true
+                }/*,
               {
                 label: 'Tweets',
                 data: tweets,
@@ -676,7 +716,7 @@
 
         // Remove loading states
         document.querySelectorAll('.loading').forEach(el => el.classList.remove('loading'));
-      });});});});
+      });});});});});
 
     // Add window resize handler
     window.addEventListener('resize', () => {
