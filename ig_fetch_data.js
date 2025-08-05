@@ -3,7 +3,7 @@ const fs = require('fs');
 const randomUseragent = require('random-useragent');
 
 const fetchRedditFollowerCount = async () => {
-  const response = await fetch('https://www.instagram.com/'+process.env.USERNAME+'/', {
+  const response = await fetch('https://i.instagram.com/api/v1/users/web_profile_info/?username='+process.env.USERNAME, {
     headers: {
       'Accept': '*/*',
       'Accept-Encoding': 'gzip, deflate, br',
