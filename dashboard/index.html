@@ -403,6 +403,16 @@
   </div>
 
   <div class="chart-section">
+      <div class="chart-header">
+          <h2>
+              <i data-lucide="line-chart" class="icon"></i>
+              Posts Overview
+          </h2>
+      </div>
+      <canvas id="postChart"></canvas>
+  </div>
+
+  <div class="chart-section">
     <div class="chart-header">
       <h2>
         <i data-lucide="line-chart" class="icon"></i>
@@ -710,6 +720,63 @@
           },
           options: chartOptions
         });
+
+          const ctx3 = document.getElementById('postChart').getContext('2d');
+
+          metricsChart = new Chart(ctx3, {
+              type: 'line',
+              data: {
+                  labels: dates,
+                  datasets: [
+                      {
+                          label: 'Posts X',
+                          data: tweets,
+                          backgroundColor: 'rgba(14, 165, 233, 0.2)',
+                          borderColor: 'rgb(14, 165, 233)',
+                          borderWidth: 2,
+                          yAxisID: 'y',
+                          fill: true
+                      },
+                      {
+                          label: 'Posts Tiktok',
+                          data: videos,
+                          backgroundColor: 'rgba(255, 87, 34, 0.2)',
+                          borderColor: 'rgb(255, 87, 34)',
+                          borderWidth: 2,
+                          yAxisID: 'y',
+                          fill: true
+                      },
+                      {
+                          label: 'Posts Reddit',
+                          data: posts,
+                          backgroundColor: 'rgba(179, 0, 0, 0.2)',
+                          borderColor: 'rgb(179, 0, 0)',
+                          borderWidth: 2,
+                          yAxisID: 'y',
+                          fill: true
+                      },
+                      {
+                          label: 'Posts OF',
+                          data: ofposts,
+                          backgroundColor: 'rgba(54,233,14,0.2)',
+                          borderColor: 'rgb(43,233,14)',
+                          borderWidth: 2,
+                          yAxisID: 'y',
+                          fill: true
+                      },
+                      {
+                          label: 'Posts IG',
+                          data: igposts,
+                          backgroundColor: 'rgba(246,242,6,0.2)',
+                          borderColor: 'rgb(255,242,0)',
+                          borderWidth: 2,
+                          yAxisID: 'y',
+                          fill: true
+                      }
+                  ]
+              },
+              options: chartOptions
+          });
 
         // Initialize all icons
         lucide.createIcons();
