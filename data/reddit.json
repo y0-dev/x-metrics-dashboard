@@ -708,5 +708,10 @@
     "date": "2025-08-05",
     "subscribers": 100,
     "posts_count": 5
+  },
+  {
+    "date": "2025-08-06",
+    "subscribers": 100,
+    "posts_count": 5
   }
 ]
