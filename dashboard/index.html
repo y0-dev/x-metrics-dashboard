@@ -49,6 +49,18 @@
       transition: background-color 0.3s, color 0.3s;
     }
 
+    .row {
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto 30px;
+    }
+
+    .col {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+
     .dashboard-header {
       width: 95%;
       max-width: 1200px;
@@ -77,7 +89,7 @@
     }
 
     .stats-container {
-      display: grid;
+      display: flex/*grid*/;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
       width: 95%;
@@ -204,7 +216,7 @@
     }
 
     .social-container {
-      width: 95%;
+      /*width: 95%;*/
       max-width: 1200px;
       margin: 0 auto 30px;
       display: flex;
@@ -255,6 +267,20 @@
         Last updated: Loading...
       </div>
     </div>
+      <div class="social-container">
+          <a href="#" onclick="Auth()" rel="noopener" class="social-link">
+              <i data-lucide="key" class="icon"></i>
+              Authorise Tiktok
+          </a>
+          <a href="privacy.html" rel="noopener" class="social-link">
+              <i data-lucide="globe-lock" class="icon"></i>
+              Privacy Policy
+          </a>
+          <a href="tos.html" rel="noopener" class="social-link">
+              <i data-lucide="receipt-text" class="icon"></i>
+              Terms of Service
+          </a>
+      </div>
     <button class="theme-toggle" id="themeToggle">
       <i data-lucide="sun" class="icon"></i>
       <i data-lucide="moon" class="icon" style="display: none;"></i>
@@ -262,21 +288,7 @@
     </button>
   </div>
 
-  <div class="social-container">
-	<a href="#" onclick="Auth()" rel="noopener" class="social-link">
-      <i data-lucide="key" class="icon"></i>
-      Authorise Tiktok
-    </a>
-	<a href="privacy.html" rel="noopener" class="social-link">
-      <i data-lucide="globe-lock" class="icon"></i>
-      Privacy Policy
-    </a>
-	<a href="tos.html" rel="noopener" class="social-link">
-      <i data-lucide="receipt-text" class="icon"></i>
-      Terms of Service
-    </a>
-  </div>
-
+  <div class="row"><div class="col">
   <div class="dashboard-header"><h2>OF</h2></div>
 
   <div class="stats-container">
@@ -298,7 +310,7 @@
       <div class="change" id="tweetsChangeof"></div>
       <div class="change" id="tweetsWeekChangeof"></div>
     </div>
-  </div>
+  </div></div><div class="col">
   
   <div class="dashboard-header"><h2>X</h2></div>
 
@@ -321,8 +333,9 @@
       <div class="change" id="tweetsChange"></div>
       <div class="change" id="tweetsWeekChange"></div>
     </div>
-  </div>
-  
+  </div></div></div>
+
+  <div class="row"><div class="col">
   <div class="dashboard-header"><h2>Tiktok</h2></div>
 
   <div class="stats-container">
@@ -344,7 +357,7 @@
       <div class="change" id="tweetsChangetiktok"></div>
       <div class="change" id="tweetsWeekChangetiktok"></div>
     </div>
-  </div>
+  </div></div><div class="col">
 
   <div class="dashboard-header"><h2>Reddit</h2></div>
 
@@ -367,7 +380,7 @@
       <div class="change" id="tweetsChangereddit"></div>
       <div class="change" id="tweetsWeekChangereddit"></div>
     </div>
-  </div>
+  </div></div></div>
 
   <div class="dashboard-header"><h2>IG</h2></div>
 
@@ -390,6 +403,13 @@
           <div class="change" id="tweetsChangeig"></div>
           <div class="change" id="tweetsWeekChangeig"></div>
       </div>
+  </div>
+
+  <div class="chart-section">
+      <button class="theme-toggle">
+          <i data-lucide="calendar" class="icon"></i>
+          From <input id="startdate" type="date" style="background: transparent; border: 0;"> to <input id="enddate" type="date" style="background: transparent; border: 0;">
+      </button>
   </div>
 
   <div class="chart-section">
@@ -447,79 +467,7 @@
       setTheme(!isDark);
     });
 
-    let metricsChart;
-
-    const chartOptions = {
-      responsive: true,
-      maintainAspectRatio: true,
-      interaction: {
-        mode: 'index',
-        intersect: false,
-      },
-      plugins: {
-        legend: {
-          display: true,
-          position: 'top',
-          labels: {
-            usePointStyle: true,
-            padding: 15,
-            font: {
-              family: 'Inter'
-            }
-          }
-        },
-        tooltip: {
-          backgroundColor: 'rgba(0, 0, 0, 0.8)',
-          padding: 12,
-          bodyFont: {
-            family: 'Inter'
-          }
-        }
-      },
-      elements: {
-        line: {
-          tension: 0.4
-        },
-        point: {
-          radius: 2,
-          hoverRadius: 6
-        }
-      },
-      /*scales: {
-        y: {
-          type: 'linear',
-          display: false,
-          position: 'left',
-          title: {
-            display: true,
-            text: 'Followers',
-            color: 'rgb(14, 165, 233)',
-            font: {
-              family: 'Inter'
-            }
-          },
-          grid: {
-            drawOnChartArea: false
-          }
-        },
-        y1: {
-          type: 'linear',
-          display: false,
-          position: 'right',
-          title: {
-            display: true,
-            text: 'Posts',
-            color: 'rgb(255, 99, 132)',
-            font: {
-              family: 'Inter'
-            }
-          },
-          grid: {
-            drawOnChartArea: false
-          }
-        }
-      }*/
-    };
+    let charts = [];
 
     function getColor(n) {
       return n == 0 ? 'neutral-change' : (n > 0 ? 'positive-change' : 'negative-change');
@@ -574,25 +522,35 @@
       }
 	}
 
+    var igdata, ofdata, rdata, tdata, data;
     fetch('data/ig.json')
         .then(tresponse => tresponse.json())
-        .then(igdata => {
+        .then(igdata => {window.igdata = igdata;
     fetch('data/of.json')
             .then(tresponse => tresponse.json())
-            .then(ofdata => {
+            .then(ofdata => {window.ofdata = ofdata;
     fetch('data/reddit.json')
             .then(tresponse => tresponse.json())
-            .then(rdata => {
+            .then(rdata => {window.rdata = rdata;
 	fetch('data/tiktok.json')
 		  .then(tresponse => tresponse.json())
-		  .then(tdata => {
+		  .then(tdata => {window.tdata = tdata;
     fetch('data/x.json')
       .then(response => response.json())
-      .then(data => {
+      .then(data => {window.data = data;
         // Update last updated time
         const lastDate = new Date(data[data.length - 1].date);
-        document.getElementById('lastUpdated').textContent = 
-          `Last updated: ${lastDate.toLocaleDateString()} ${lastDate.toLocaleTimeString()}`;
+        document.getElementById('lastUpdated').textContent = `Last updated: ${lastDate.toLocaleDateString()} ${lastDate.toLocaleTimeString()}`;
+
+          const urlParams = new URLSearchParams(window.location.search);
+          const defaultstartdate = new Date();defaultstartdate.setMonth(defaultstartdate.getMonth() - 3);
+          const startdate = urlParams.get('startdate') ? new Date(urlParams.get('startdate')) : defaultstartdate;
+          document.getElementById('startdate').value = startdate.toLocaleDateString();
+          const enddate = urlParams.get('enddate') ? new Date(urlParams.get('enddate')) : new Date();
+          document.getElementById('enddate').value = enddate.toLocaleDateString();
+
+          document.getElementById('startdate').onchange = loadCharts;
+          document.getElementById('enddate').onchange = loadCharts;
 
         const dates = data.map(item => item.date);
         const followers = data.map(item => item.followers_count);
@@ -602,12 +560,15 @@
         const rfollowers = rdata.map(item => item.subscribers);
         const posts = rdata.map(item => item.posts_count);
         const offollowers = ofdata.map(item => item.followers_count);
-        const ofposts = ofdata.map(item => item.picture_count+item.video_count);
+        var ofposts = ofdata.map(item => item.picture_count+item.video_count);
         const igfollowers = igdata.map(item => item.followers_count);
         const igposts = igdata.map(item => item.posts_count);
 
         const prices = ofdata.map(item => item.price);
         const dprices = ofdata.map(item => item.discount);
+
+          ofdata = ofdata.map(item => {item['posts_count']=item.picture_count+item.video_count; return item;});
+          window.ofdata = ofdata;
 
         updateStat('', followers, tweets);
         updateStat('tiktok', tfollowers, videos);
@@ -615,168 +576,7 @@
         updateStat('of', offollowers, ofposts);
         updateStat('ig', igfollowers, igposts);
 
-        //const minFollowers = Math.min(...followers) - 100;
-        //const minTweets = Math.min(...tweets) - 100;
-
-        const ctx = document.getElementById('metricsChart').getContext('2d');
-
-        metricsChart = new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: dates,
-            datasets: [
-              {
-                label: 'Followers X',
-                data: followers,
-                backgroundColor: 'rgba(14, 165, 233, 0.2)',
-                borderColor: 'rgb(14, 165, 233)',
-                borderWidth: 2,
-                yAxisID: 'y',
-                fill: true
-              },
-              {
-                label: 'Followers Tiktok',
-                data: tfollowers,
-                backgroundColor: 'rgba(255, 87, 34, 0.2)',
-                borderColor: 'rgb(255, 87, 34)',
-                borderWidth: 2,
-                yAxisID: 'y',
-                fill: true
-              },
-              {
-                label: 'Followers Reddit',
-                data: rfollowers,
-                backgroundColor: 'rgba(179, 0, 0, 0.2)',
-                borderColor: 'rgb(179, 0, 0)',
-                borderWidth: 2,
-                yAxisID: 'y',
-                fill: true
-              },
-              {
-                label: 'Followers OF',
-                data: offollowers,
-                backgroundColor: 'rgba(54,233,14,0.2)',
-                borderColor: 'rgb(43,233,14)',
-                borderWidth: 2,
-                yAxisID: 'y',
-                fill: true
-              },
-                {
-                    label: 'Followers IG',
-                    data: igfollowers,
-                    backgroundColor: 'rgba(246,242,6,0.2)',
-                    borderColor: 'rgb(255,242,0)',
-                    borderWidth: 2,
-                    yAxisID: 'y',
-                    fill: true
-                }/*,
-              {
-                label: 'Tweets',
-                data: tweets,
-                backgroundColor: 'rgba(3, 169, 244, 0.2)',
-                borderColor: 'rgb(3, 169, 244)',
-                borderWidth: 2,
-                yAxisID: 'y1',
-                fill: true
-              },
-              {
-                label: 'Videos',
-                data: videos,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgb(255, 99, 132)',
-                borderWidth: 2,
-                yAxisID: 'y1',
-                fill: true
-              }*/
-            ]
-          },
-          options: chartOptions
-        });
-
-        const ctx2 = document.getElementById('priceChart').getContext('2d');
-
-        metricsChart = new Chart(ctx2, {
-          type: 'line',
-          data: {
-            labels: dates,
-            datasets: [
-              {
-                label: 'Price',
-                data: prices,
-                backgroundColor: 'rgba(14, 165, 233, 0.2)',
-                borderColor: 'rgb(14, 165, 233)',
-                borderWidth: 2,
-                yAxisID: 'y'
-              },
-              {
-                label: 'Discounted price',
-                data: dprices,
-                backgroundColor: 'rgba(255, 87, 34, 0.2)',
-                borderColor: 'rgb(255, 87, 34)',
-                borderWidth: 2,
-                yAxisID: 'y'
-              }
-            ]
-          },
-          options: chartOptions
-        });
-
-          const ctx3 = document.getElementById('postChart').getContext('2d');
-
-          metricsChart = new Chart(ctx3, {
-              type: 'line',
-              data: {
-                  labels: dates,
-                  datasets: [
-                      {
-                          label: 'Posts X',
-                          data: tweets,
-                          backgroundColor: 'rgba(14, 165, 233, 0.2)',
-                          borderColor: 'rgb(14, 165, 233)',
-                          borderWidth: 2,
-                          yAxisID: 'y',
-                          fill: true
-                      },
-                      {
-                          label: 'Posts Tiktok',
-                          data: videos,
-                          backgroundColor: 'rgba(255, 87, 34, 0.2)',
-                          borderColor: 'rgb(255, 87, 34)',
-                          borderWidth: 2,
-                          yAxisID: 'y',
-                          fill: true
-                      },
-                      {
-                          label: 'Posts Reddit',
-                          data: posts,
-                          backgroundColor: 'rgba(179, 0, 0, 0.2)',
-                          borderColor: 'rgb(179, 0, 0)',
-                          borderWidth: 2,
-                          yAxisID: 'y',
-                          fill: true
-                      },
-                      {
-                          label: 'Posts OF',
-                          data: ofposts,
-                          backgroundColor: 'rgba(54,233,14,0.2)',
-                          borderColor: 'rgb(43,233,14)',
-                          borderWidth: 2,
-                          yAxisID: 'y',
-                          fill: true
-                      },
-                      {
-                          label: 'Posts IG',
-                          data: igposts,
-                          backgroundColor: 'rgba(246,242,6,0.2)',
-                          borderColor: 'rgb(255,242,0)',
-                          borderWidth: 2,
-                          yAxisID: 'y',
-                          fill: true
-                      }
-                  ]
-              },
-              options: chartOptions
-          });
+        loadCharts();
 
         // Initialize all icons
         lucide.createIcons();
@@ -785,9 +585,244 @@
         document.querySelectorAll('.loading').forEach(el => el.classList.remove('loading'));
       });});});});});
 
+    function loadCharts() {
+        initChart('metrics', [
+            {
+                label: 'Followers X',
+                data: data,
+                field: 'followers_count',
+                backgroundColor: 'rgba(14, 165, 233, 0.2)',
+                borderColor: 'rgb(14, 165, 233)',
+                borderWidth: 2,
+                yAxisID: 'y',
+                fill: true
+            },
+            {
+                label: 'Followers Tiktok',
+                data: tdata,
+                field: 'followers_count',
+                backgroundColor: 'rgba(255, 87, 34, 0.2)',
+                borderColor: 'rgb(255, 87, 34)',
+                borderWidth: 2,
+                yAxisID: 'y',
+                fill: true
+            },
+            {
+                label: 'Followers Reddit',
+                data: rdata,
+                field: 'subscribers',
+                backgroundColor: 'rgba(179, 0, 0, 0.2)',
+                borderColor: 'rgb(179, 0, 0)',
+                borderWidth: 2,
+                yAxisID: 'y',
+                fill: true
+            },
+            {
+                label: 'Followers OF',
+                data: ofdata,
+                field: 'followers_count',
+                backgroundColor: 'rgba(54,233,14,0.2)',
+                borderColor: 'rgb(43,233,14)',
+                borderWidth: 2,
+                yAxisID: 'y',
+                fill: true
+            },
+            {
+                label: 'Followers IG',
+                data: igdata,
+                field: 'followers_count',
+                backgroundColor: 'rgba(246,242,6,0.2)',
+                borderColor: 'rgb(255,242,0)',
+                borderWidth: 2,
+                yAxisID: 'y',
+                fill: true
+            }]);
+        initChart('price', [
+            {
+                label: 'Price',
+                data: ofdata,
+                field: 'price',
+                backgroundColor: 'rgba(14, 165, 233, 0.2)',
+                borderColor: 'rgb(14, 165, 233)',
+                borderWidth: 2,
+                yAxisID: 'y'
+            },
+            {
+                label: 'Discounted price',
+                data: ofdata,
+                field: 'discount',
+                backgroundColor: 'rgba(255, 87, 34, 0.2)',
+                borderColor: 'rgb(255, 87, 34)',
+                borderWidth: 2,
+                yAxisID: 'y'
+            }
+        ]);
+        initChart('post', [
+            {
+                label: 'Posts X',
+                data: data,
+                field: 'tweet_count',
+                backgroundColor: 'rgba(14, 165, 233, 0.2)',
+                borderColor: 'rgb(14, 165, 233)',
+                borderWidth: 2,
+                yAxisID: 'y',
+                fill: true
+            },
+            {
+                label: 'Posts Tiktok',
+                data: tdata,
+                field: 'video_count',
+                backgroundColor: 'rgba(255, 87, 34, 0.2)',
+                borderColor: 'rgb(255, 87, 34)',
+                borderWidth: 2,
+                yAxisID: 'y',
+                fill: true
+            },
+            {
+                label: 'Posts Reddit',
+                data: rdata,
+                field: 'posts_count',
+                backgroundColor: 'rgba(179, 0, 0, 0.2)',
+                borderColor: 'rgb(179, 0, 0)',
+                borderWidth: 2,
+                yAxisID: 'y',
+                fill: true
+            },
+            {
+                label: 'Posts OF',
+                data: ofdata,
+                field: 'posts_count',
+                backgroundColor: 'rgba(54,233,14,0.2)',
+                borderColor: 'rgb(43,233,14)',
+                borderWidth: 2,
+                yAxisID: 'y',
+                fill: true
+            },
+            {
+                label: 'Posts IG',
+                data: igdata,
+                field: 'posts_count',
+                backgroundColor: 'rgba(246,242,6,0.2)',
+                borderColor: 'rgb(255,242,0)',
+                borderWidth: 2,
+                yAxisID: 'y',
+                fill: true
+            }
+        ]);
+    }
+
+    function initChart(id, datas) {
+        const startdate = new Date(document.getElementById('startdate').value);
+        const enddate = new Date(document.getElementById('enddate').value);
+        const dates = datas[0].data.filter(item => new Date(item.date) >= startdate && new Date(item.date) <= enddate).map(item => item.date);
+        const ctx = document.getElementById(id+'Chart').getContext('2d');
+
+        const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: true,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top',
+                    labels: {
+                        usePointStyle: true,
+                        padding: 15,
+                        font: {
+                            family: 'Inter'
+                        }
+                    }
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    padding: 12,
+                    bodyFont: {
+                        family: 'Inter'
+                    }
+                }
+            },
+            elements: {
+                line: {
+                    tension: 0.4
+                },
+                point: {
+                    radius: 2,
+                    hoverRadius: 6
+                }
+            },
+            /*scales: {
+              y: {
+                type: 'linear',
+                display: false,
+                position: 'left',
+                title: {
+                  display: true,
+                  text: 'Followers',
+                  color: 'rgb(14, 165, 233)',
+                  font: {
+                    family: 'Inter'
+                  }
+                },
+                grid: {
+                  drawOnChartArea: false
+                }
+              },
+              y1: {
+                type: 'linear',
+                display: false,
+                position: 'right',
+                title: {
+                  display: true,
+                  text: 'Posts',
+                  color: 'rgb(255, 99, 132)',
+                  font: {
+                    family: 'Inter'
+                  }
+                },
+                grid: {
+                  drawOnChartArea: false
+                }
+              }
+            }*/
+        };
+
+        if (charts[id]) {
+            console.log("updating chart "+id);
+            charts[id].data.labels = dates;
+            charts[id].data.datasets = datas.map(e => {return {
+                label: e.label,
+                data: e.data.filter(item => new Date(item.date) >= startdate && new Date(item.date) <= enddate).map(item => item[e.field]),
+                backgroundColor: e.backgroundColor,
+                borderColor: e.borderColor,
+                borderWidth: 2,
+                yAxisID: 'y',
+                fill: e.fill
+            };});
+            charts[id].update();
+        } else charts[id] = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: datas.map(e => {return {
+                        label: e.label,
+                        data: e.data.filter(item => new Date(item.date) >= startdate && new Date(item.date) <= enddate).map(item => item[e.field]),
+                        backgroundColor: e.backgroundColor,
+                        borderColor: e.borderColor,
+                        borderWidth: 2,
+                        yAxisID: 'y',
+                        fill: e.fill
+                    };})
+            },
+            options: chartOptions
+        });
+    }
+
     // Add window resize handler
     window.addEventListener('resize', () => {
-      if (metricsChart) metricsChart.resize();
+      charts.forEach(chart => chart.resize());
     });
 
     // Update the change display code to include trending icons
