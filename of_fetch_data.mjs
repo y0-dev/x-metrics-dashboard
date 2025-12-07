@@ -27,7 +27,7 @@ describe('scrape', async function () {
         const LikeCount = await driver.findElement(By.xpath('(//span[@class="b-profile__sections__count g-semibold"])[3]'));
         const LikeCountN = await LikeCount.getText();
         const FanCount = await driver.findElements(By.xpath('(//span[@class="b-profile__sections__count g-semibold"])'));
-        const FanCountN = FanCount.length>3?await FanCount[4].getText():'0';
+        const FanCountN = FanCount.length>3?await FanCount[3].getText():'0';
 
         var Discount = await driver.findElements(By.xpath('//div[@class="m-rounded m-flex m-space-between m-lg g-btn"]//*[@class="b-btn-text__small"]'));
         var DiscountN = 0, PriceN = 0;
