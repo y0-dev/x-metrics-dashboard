@@ -22,11 +22,11 @@ describe('scrape', async function () {
 
         //const PicCount = await driver.findElement(By.xpath('(//span[@class="b-profile__sections__count g-semibold"])[1]'));
         //const PicCountN = await PicCount.getText();
-        const VideoCount = await driver.findElement(By.xpath('(//div[@class="profile-stat"])[2]'));
+        const VideoCount = await driver.findElement(By.xpath('(//div[@class="profile-stat"])[3]'));
         const VideoCountN = await VideoCount.getText();
-        const LikeCount = await driver.findElement(By.xpath('(//div[@class="profile-stat"])[0]'));
+        const LikeCount = await driver.findElement(By.xpath('(//div[@class="profile-stat"])[1]'));
         const LikeCountN = await LikeCount.getText();
-        const FanCount = await driver.findElement(By.xpath('(//div[@class="profile-stat"])[0]'));
+        const FanCount = await driver.findElement(By.xpath('(//div[@class="profile-stat"])[2]'));
         const FanCountN = await FanCount.getText();
 
         const Price = await driver.findElement(By.xpath('(//app-balance-display)'));
