@@ -37,7 +37,7 @@ describe('scrape', async function () {
         const metrics = {
             "followers_count": parseInt(FanCountN),
             "following_count": 0,
-            "picture_count": parseInt(PicCountN),
+            "picture_count": 0,//parseInt(PicCountN),
             "video_count": parseInt(VideoCountN),
             "like_count": parseInt(LikeCountN),
             "price": parseFloat(PriceN),
