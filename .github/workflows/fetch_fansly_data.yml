@@ -1,0 +1,63 @@
+name: Fetch Fansly Data
+
+on:
+  schedule:
+    # Runs at 4 AM UTC (5 AM in Poland during Standard Time)
+    - cron: '0 4 * * *'
+  workflow_dispatch:
+    inputs:
+      browser:
+        type: choice
+        description: Which browser to test
+        required: true
+        options:
+          - chrome
+          - firefox
+          - edge
+        default: 'chrome'
+
+jobs:
+  fetch_data:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    container:
+      image: node:23
+
+    services:
+      selenium:
+        image: selenium/standalone-${{ github.event.inputs.browser || 'chrome' }}
+        options: --shm-size=2gb
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '23'
+          cache: 'npm'
+      - run: npm ci
+
+      - id: fetch_data
+        run: npm run fansly_fetch_data
+        env:
+          BROWSER: ${{ github.event.inputs.browser || 'chrome' }}
+          EMAIL: ${{ secrets.EMAIL }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          USERNAME: ${{ secrets.REDDIT_USERNAME }}
+
+      - name: Save data
+        run: node fansly_save_data.js
+        env:
+          METRICS: ${{ steps.fetch_data.outputs.METRICS }}
+
+      - name: Commit and push if there's changes
+        run: |
+          git config --global --add safe.directory /__w/x-metrics-dashboard/x-metrics-dashboard
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git add data/fansly.json
+          git commit -m "Update data for Platform Fansly" || exit 0  # exit 0 if no changes
+          git push
