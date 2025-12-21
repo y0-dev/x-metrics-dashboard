@@ -7,13 +7,17 @@ describe('scrape', async function () {
     let driver;
 
     const scrape = async () => {
-        await driver.get('https://fansly.com/'+process.env.USERNAME);
+        await driver.get('https://fansly.com/'+process.env.USERNAME+'/posts');
 
         // Wait until the result page is loaded
         await driver.wait(until.elementLocated(By.css('.profile-stats')));
         //await delay(2000);
         await driver.wait(until.elementIsVisible(driver.findElement(By.css('.profile-stats'))));
         await driver.wait(until.elementIsEnabled(driver.findElement(By.css('.profile-stats'))));
+
+        //Click Enter 18+
+        var Enters = await driver.findElements(By.xpath('//div[@class="btn large solid-green flex-1"]'));
+        if (Enters.length>0) Enters[0].click();
 
         //const source = await driver.getPageSource();
         //if (source.includes('you are human'))
