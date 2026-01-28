@@ -400,7 +400,27 @@
     "discount": 7.99
   },
   {
+    "date": "2026-01-25",
+    "followers_count": 18,
+    "following_count": 0,
+    "picture_count": 0,
+    "video_count": 5,
+    "like_count": 32,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
     "date": "2026-01-26",
+    "followers_count": 20,
+    "following_count": 0,
+    "picture_count": 0,
+    "video_count": 5,
+    "like_count": 32,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2026-01-27",
     "followers_count": 20,
     "following_count": 0,
     "picture_count": 0,
