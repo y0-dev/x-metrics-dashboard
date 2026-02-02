@@ -1608,5 +1608,10 @@
     "date": "2026-02-01",
     "subscribers": 99,
     "posts_count": 5
+  },
+  {
+    "date": "2026-02-02",
+    "subscribers": 99,
+    "posts_count": 5
   }
 ]
