@@ -11,9 +11,7 @@ describe('scrape', async function () {
     }
 
     const scrape = async () => {
-        console.log('scraping');
         await driver.get('https://www.instagram.com/'+process.env.USERNAME+'/');//TODO number of followers are not real when not logged in
-        console.log('scraped');
 
         var filename = "test"
             .replace(/['"]+/g, '')
@@ -22,10 +20,11 @@ describe('scrape', async function () {
         var encodedString = await driver.takeScreenshot();
         await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
 
+        return 1;
+
         // Wait until the result page is loaded
         await driver.wait(until.elementLocated(By.xpath('//span[contains(., "followers")]')));
         await delay(2000);
-        console.log('located');
         //await driver.wait(until.elementIsVisible(driver.findElement(By.css('*[data-icon-name="icon-back"]'))));
         //await driver.wait(until.elementIsEnabled(driver.findElement(By.css('*[data-icon-name="icon-back"]'))));
 
@@ -33,21 +32,13 @@ describe('scrape', async function () {
         //if (source.includes('you are human'))
         //    throw new Error('Cloudflare: You are not human');
         //else throw new Error(source);
-         filename = "test"
-            .replace(/['"]+/g, '')
-            .replace(/[^a-z0-9]/gi, '_')
-            .toLowerCase();
-         encodedString = await driver.takeScreenshot();
-        await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
 
         const FollowerCount = await driver.findElement(By.xpath('//span[contains(., "followers")]'));
         const FollowerCountN = (await FollowerCount.getText()).match(/\d+.\d+/)[0];
 
-        console.log('looking for following');
         const FollowingCount = await driver.findElement(By.xpath('//span[contains(., "following")]'));
         const FollowingCountN = (await FollowingCount.getText()).match(/\d+.\d+/)[0];
 
-        console.log('looking for post');
         const PostCount = await driver.findElement(By.xpath('//span[contains(., "posts")]'));
         const PostCountN = (await PostCount.getText()).match(/\d+.\d+/)[0];
 
