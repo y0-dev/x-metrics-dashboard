@@ -39,7 +39,7 @@ describe('scrape', async function () {
         // Write the metrics to the environment file
         fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
 
-        return FanCountN;
+        return FollowerCountN;
     };
 
     // Make sure the BROWSER env variable is set
