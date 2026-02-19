@@ -6,8 +6,19 @@ describe('scrape', async function () {
     this.timeout(20000);
     let driver;
 
+    if (!fs.existsSync('./screenshots')) {
+        fs.mkdirSync('./screenshots');
+    }
+
     const scrape = async () => {
         await driver.get('https://www.instagram.com/'+process.env.USERNAME+'/');//TODO number of followers are not real when not logged in
+
+        var filename = "test"
+            .replace(/['"]+/g, '')
+            .replace(/[^a-z0-9]/gi, '_')
+            .toLowerCase();
+        var encodedString = await driver.takeScreenshot();
+        await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
 
         // Wait until the result page is loaded
         await driver.wait(until.elementLocated(By.xpath('//span[contains(., "followers")]')));
@@ -19,6 +30,12 @@ describe('scrape', async function () {
         //if (source.includes('you are human'))
         //    throw new Error('Cloudflare: You are not human');
         //else throw new Error(source);
+         filename = "test"
+            .replace(/['"]+/g, '')
+            .replace(/[^a-z0-9]/gi, '_')
+            .toLowerCase();
+         encodedString = await driver.takeScreenshot();
+        await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
 
         const FollowerCount = await driver.findElement(By.xpath('//span[contains(., "followers")]'));
         const FollowerCountN = (await FollowerCount.getText()).match(/\d+.\d+/)[0];
