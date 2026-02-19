@@ -490,6 +490,16 @@
     "discount": 7.99
   },
   {
+    "date": "2026-02-03",
+    "followers_count": 21,
+    "following_count": 0,
+    "picture_count": 0,
+    "video_count": 5,
+    "like_count": 32,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
     "date": "2026-02-04",
     "followers_count": 21,
     "following_count": 0,
@@ -500,7 +510,37 @@
     "discount": 7.99
   },
   {
+    "date": "2026-02-05",
+    "followers_count": 21,
+    "following_count": 0,
+    "picture_count": 0,
+    "video_count": 5,
+    "like_count": 32,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2026-02-06",
+    "followers_count": 21,
+    "following_count": 0,
+    "picture_count": 0,
+    "video_count": 5,
+    "like_count": 32,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
     "date": "2026-02-07",
+    "followers_count": 21,
+    "following_count": 0,
+    "picture_count": 0,
+    "video_count": 5,
+    "like_count": 32,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2026-02-08",
     "followers_count": 21,
     "following_count": 0,
     "picture_count": 0,
@@ -550,6 +590,16 @@
     "discount": 7.99
   },
   {
+    "date": "2026-02-13",
+    "followers_count": 21,
+    "following_count": 0,
+    "picture_count": 0,
+    "video_count": 5,
+    "like_count": 32,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
     "date": "2026-02-14",
     "followers_count": 21,
     "following_count": 0,
@@ -571,6 +621,16 @@
   },
   {
     "date": "2026-02-16",
+    "followers_count": 20,
+    "following_count": 0,
+    "picture_count": 0,
+    "video_count": 5,
+    "like_count": 32,
+    "price": 7.99,
+    "discount": 7.99
+  },
+  {
+    "date": "2026-02-17",
     "followers_count": 20,
     "following_count": 0,
     "picture_count": 0,
