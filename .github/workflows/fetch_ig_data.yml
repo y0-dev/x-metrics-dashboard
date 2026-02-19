@@ -4,7 +4,17 @@ on:
   schedule:
     # Runs at 4 AM UTC (5 AM in Poland during Standard Time)
     - cron: '0 4 * * *'
-  workflow_dispatch: # This line enables manual triggering of the action
+  workflow_dispatch:
+    inputs:
+      browser:
+        type: choice
+        description: Which browser to test
+        required: true
+        options:
+          - chrome
+          - firefox
+          - edge
+        default: 'chrome'
 
 jobs:
   fetch_data:
@@ -14,22 +24,26 @@ jobs:
       contents: write
       pull-requests: write
 
+    container:
+      image: node:23
+
+    services:
+      selenium:
+        image: selenium/standalone-${{ github.event.inputs.browser || 'chrome' }}
+        options: --shm-size=2gb
+
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: '23'
+          cache: 'npm'
+      - run: npm ci
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Fetch Data from Platform IG
-        id: fetch_data
-        run: node ig_fetch_data.js
+      - id: fetch_data
+        run: npm run ig_fetch_data
         env:
+          BROWSER: ${{ github.event.inputs.browser || 'chrome' }}
           USERNAME: ${{ secrets.REDDIT_USERNAME }}
 
       - name: Save data
@@ -39,6 +53,7 @@ jobs:
 
       - name: Commit and push if there's changes
         run: |
+          git config --global --add safe.directory /__w/x-metrics-dashboard/x-metrics-dashboard
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add data/ig.json
