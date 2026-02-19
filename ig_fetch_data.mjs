@@ -20,7 +20,7 @@ describe('scrape', async function () {
         var encodedString = await driver.takeScreenshot();
         await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
 
-        return 1;
+        return '1';
 
         // Wait until the result page is loaded
         await driver.wait(until.elementLocated(By.xpath('//span[contains(., "followers")]')));
