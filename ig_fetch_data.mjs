@@ -19,6 +19,8 @@ describe('scrape', async function () {
             .toLowerCase();
         var encodedString = await driver.takeScreenshot();
         await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
+        const source = await driver.getPageSource();
+        console.log(source);
 
         return '1';
 
