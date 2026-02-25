@@ -24,9 +24,7 @@ const fetchIGFollowerCount = async () => {
           'x-rapidapi-host': 'instagram120.p.rapidapi.com',
           'Content-Type': 'application/json'
         },
-        body: {
-          "username": process.env.USERNAME
-        }
+        body: JSON.stringify({ username: process.env.USERNAME })
       });
 
   if (!response.ok) {
