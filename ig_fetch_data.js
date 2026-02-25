@@ -25,7 +25,7 @@ const fetchIGFollowerCount = async () => {
           'Content-Type': 'application/json'
         },
         body: {
-          username: process.env.USERNAME
+          "username": process.env.USERNAME
         }
       });
 
