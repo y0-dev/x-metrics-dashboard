@@ -3,7 +3,7 @@ name: Fetch IG Data
 on:
   schedule:
     # Runs at 4 AM UTC (5 AM in Poland during Standard Time)
-    - cron: '0 4 * * *'
+    - cron: '10 4 * * *'
   workflow_dispatch: # This line enables manual triggering of the action
 
 jobs:
@@ -40,6 +40,8 @@ jobs:
 
       - name: Commit and push if there's changes
         run: |
+          git pull
+          git config --global --add safe.directory /__w/x-metrics-dashboard/x-metrics-dashboard
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git add data/ig.json
