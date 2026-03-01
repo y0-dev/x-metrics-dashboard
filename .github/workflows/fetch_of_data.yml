@@ -55,10 +55,10 @@ jobs:
 
       - name: Commit and push if there's changes
         run: |
-          git pull
           git config --global --add safe.directory /__w/x-metrics-dashboard/x-metrics-dashboard
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
+          git pull
           git add data/of.json
           git commit -m "Update data for Platform OF" || exit 0  # exit 0 if no changes
           git push
