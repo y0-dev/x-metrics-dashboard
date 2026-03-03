@@ -4,7 +4,7 @@ const randomUseragent = require('random-useragent');
 
 const fetchIGFollowerCount = async () => {
   const response = await fetch(
-      'https://instagram-profile1.p.rapidapi.com/getprofile/'+process.env.USERNAME
+      'https://instagram-profile1.p.rapidapi.com/getprofile/'+process.env.USERNAME//50calls/month
       //'https://instagram120.p.rapidapi.com/api/instagram/profile'//based on public logged out data so fake followers number, same as instagram-looter2
       //'https://i.instagram.com/api/v1/users/web_profile_info/?username='+process.env.USERNAME
       , {
@@ -31,6 +31,7 @@ const fetchIGFollowerCount = async () => {
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);//TODO 429 Too Many Requests
   }
+  console.log(response.body);
 
   const data = await response.json();
 
