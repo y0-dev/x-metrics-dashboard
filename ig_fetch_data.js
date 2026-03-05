@@ -31,7 +31,7 @@ const fetchIGFollowerCount = async () => {
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);//TODO 429 Too Many Requests
   }
-  console.log(response.text());
+  console.log(await response.text());
 
   const data = await response.json();
 
