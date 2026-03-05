@@ -31,9 +31,12 @@ const fetchIGFollowerCount = async () => {
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);//TODO 429 Too Many Requests
   }
-  console.log(await response.text());
+  //console.log(await response.text());//{"error":true,"username":"***","errCode":"ERF","status":400,"message":"Not Found, please check username","not_found":true,"cached_data":{"cached":true,"message":"This username/shortcode is not found, you can try again in the next 5 minutes"}}
 
   const data = await response.json();
+  if (data.error) {
+      throw new Error(`HTTP error! status: ${data.status} message: ${data.message}`);
+  }
 
     // Extract the metrics
     const metrics = {
