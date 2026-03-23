@@ -311,53 +311,53 @@
       <div class="change" id="tweetsWeekChangeof"></div>
     </div>
   </div></div><div class="col">
-  
-  <div class="dashboard-header"><h2>X</h2></div>
+      <div class="dashboard-header"><h2>Fansly</h2></div>
 
-  <div class="stats-container">
-    <div class="current-stats">
-      <div class="stat-title">
-        <i data-lucide="users" class="icon"></i>
-        Total Followers
-      </div>
-      <div class="stat-value" id="currentFollowers">Loading...</div>
-      <div class="change" id="followersChange"></div>
-      <div class="change" id="followersWeekChange"></div>
-    </div>
-    <div class="current-stats">
-      <div class="stat-title">
-        <i data-lucide="message-square" class="icon"></i>
-        Total Posts
-      </div>
-      <div class="stat-value" id="currentTweets">Loading...</div>
-      <div class="change" id="tweetsChange"></div>
-      <div class="change" id="tweetsWeekChange"></div>
-    </div>
-  </div></div></div>
+      <div class="stats-container">
+          <div class="current-stats">
+              <div class="stat-title">
+                  <i data-lucide="users" class="icon"></i>
+                  Total Followers
+              </div>
+              <div class="stat-value" id="currentFollowersfansly">Loading...</div>
+              <div class="change" id="followersChangefansly"></div>
+              <div class="change" id="followersWeekChangefansly"></div>
+          </div>
+          <div class="current-stats">
+              <div class="stat-title">
+                  <i data-lucide="message-square" class="icon"></i>
+                  Total Posts
+              </div>
+              <div class="stat-value" id="currentTweetsfansly">Loading...</div>
+              <div class="change" id="tweetsChangefansly"></div>
+              <div class="change" id="tweetsWeekChangefansly"></div>
+          </div>
+      </div></div></div>
 
   <div class="row"><div class="col">
-  <div class="dashboard-header"><h2>Tiktok</h2></div>
 
-  <div class="stats-container">
-    <div class="current-stats">
-      <div class="stat-title">
-        <i data-lucide="users" class="icon"></i>
-        Total Followers
-      </div>
-      <div class="stat-value" id="currentFollowerstiktok">Loading...</div>
-      <div class="change" id="followersChangetiktok"></div>
-      <div class="change" id="followersWeekChangetiktok"></div>
-    </div>
-    <div class="current-stats">
-      <div class="stat-title">
-        <i data-lucide="message-square" class="icon"></i>
-        Total Posts
-      </div>
-      <div class="stat-value" id="currentTweetstiktok">Loading...</div>
-      <div class="change" id="tweetsChangetiktok"></div>
-      <div class="change" id="tweetsWeekChangetiktok"></div>
-    </div>
-  </div></div><div class="col">
+      <div class="dashboard-header"><h2>X</h2></div>
+
+      <div class="stats-container">
+          <div class="current-stats">
+              <div class="stat-title">
+                  <i data-lucide="users" class="icon"></i>
+                  Total Followers
+              </div>
+              <div class="stat-value" id="currentFollowers">Loading...</div>
+              <div class="change" id="followersChange"></div>
+              <div class="change" id="followersWeekChange"></div>
+          </div>
+          <div class="current-stats">
+              <div class="stat-title">
+                  <i data-lucide="message-square" class="icon"></i>
+                  Total Posts
+              </div>
+              <div class="stat-value" id="currentTweets">Loading...</div>
+              <div class="change" id="tweetsChange"></div>
+              <div class="change" id="tweetsWeekChange"></div>
+          </div>
+      </div></div><div class="col">
 
   <div class="dashboard-header"><h2>Reddit</h2></div>
 
@@ -382,6 +382,29 @@
     </div>
   </div></div></div>
 
+  <div class="row"><div class="col">
+      <div class="dashboard-header"><h2>Tiktok</h2></div>
+
+      <div class="stats-container">
+          <div class="current-stats">
+              <div class="stat-title">
+                  <i data-lucide="users" class="icon"></i>
+                  Total Followers
+              </div>
+              <div class="stat-value" id="currentFollowerstiktok">Loading...</div>
+              <div class="change" id="followersChangetiktok"></div>
+              <div class="change" id="followersWeekChangetiktok"></div>
+          </div>
+          <div class="current-stats">
+              <div class="stat-title">
+                  <i data-lucide="message-square" class="icon"></i>
+                  Total Posts
+              </div>
+              <div class="stat-value" id="currentTweetstiktok">Loading...</div>
+              <div class="change" id="tweetsChangetiktok"></div>
+              <div class="change" id="tweetsWeekChangetiktok"></div>
+          </div>
+      </div></div><div class="col">
   <div class="dashboard-header"><h2>IG</h2></div>
 
   <div class="stats-container">
@@ -403,7 +426,7 @@
           <div class="change" id="tweetsChangeig"></div>
           <div class="change" id="tweetsWeekChangeig"></div>
       </div>
-  </div>
+  </div></div></div>
 
   <div class="chart-section">
       <button class="theme-toggle">
@@ -538,6 +561,9 @@
     fetch('data/x.json')
       .then(response => response.json())
       .then(data => {window.data = data;
+    fetch('data/fansly.json')
+        .then(response => response.json())
+        .then(fdata => {window.fdata = fdata;
         // Update last updated time
         const lastDate = new Date(data[data.length - 1].date);
         document.getElementById('lastUpdated').textContent = `Last updated: ${lastDate.toLocaleDateString()} ${lastDate.toLocaleTimeString()}`;
@@ -563,6 +589,8 @@
         var ofposts = ofdata.map(item => item.picture_count+item.video_count);
         const igfollowers = igdata.map(item => item.followers_count);
         const igposts = igdata.map(item => item.posts_count);
+        const ffollowers = fdata.map(item => item.followers_count);
+        const fposts = fdata.map(item => item.picture_count+item.video_count);
 
         const prices = ofdata.map(item => item.price);
         const dprices = ofdata.map(item => item.discount);
@@ -575,6 +603,7 @@
         updateStat('reddit', rfollowers, posts);
         updateStat('of', offollowers, ofposts);
         updateStat('ig', igfollowers, igposts);
+        updateStat('fansly', ffollowers, fposts);
 
         loadCharts();
 
@@ -583,7 +612,7 @@
 
         // Remove loading states
         document.querySelectorAll('.loading').forEach(el => el.classList.remove('loading'));
-      });});});});});
+      });});});});});});
 
     function loadCharts() {
         initChart('metrics', [
@@ -623,6 +652,16 @@
                 field: 'followers_count',
                 backgroundColor: 'rgba(54,233,14,0.2)',
                 borderColor: 'rgb(43,233,14)',
+                borderWidth: 2,
+                yAxisID: 'y',
+                fill: true
+            },
+            {
+                label: 'Followers Fansly',
+                data: fdata,
+                field: 'followers_count',
+                backgroundColor: 'rgb(7,46,96)',
+                borderColor: 'rgb(4,111,251)',
                 borderWidth: 2,
                 yAxisID: 'y',
                 fill: true
