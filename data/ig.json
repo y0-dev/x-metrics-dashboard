@@ -2454,6 +2454,12 @@
     "posts_count": 6
   },
   {
+    "date": "2026-04-30",
+    "followers_count": 108,
+    "following_count": 12,
+    "posts_count": 6
+  },
+  {
     "date": "2026-05-01",
     "followers_count": 108,
     "following_count": 12,
@@ -2472,7 +2478,19 @@
     "posts_count": 6
   },
   {
+    "date": "2026-05-04",
+    "followers_count": 109,
+    "following_count": 11,
+    "posts_count": 6
+  },
+  {
     "date": "2026-05-05",
+    "followers_count": 111,
+    "following_count": 11,
+    "posts_count": 6
+  },
+  {
+    "date": "2026-05-06",
     "followers_count": 111,
     "following_count": 11,
     "posts_count": 6
@@ -2493,6 +2511,18 @@
     "date": "2026-05-09",
     "followers_count": 111,
     "following_count": 11,
+    "posts_count": 6
+  },
+  {
+    "date": "2026-05-10",
+    "followers_count": 111,
+    "following_count": 11,
+    "posts_count": 6
+  },
+  {
+    "date": "2026-05-11",
+    "followers_count": 112,
+    "following_count": 12,
     "posts_count": 6
   },
   {
