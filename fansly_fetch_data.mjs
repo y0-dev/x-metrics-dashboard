@@ -24,29 +24,42 @@ describe('scrape', async function () {
         //    throw new Error('Cloudflare: You are not human');
         //else throw new Error(source);
 
-        //const PicCount = await driver.findElement(By.xpath('(//span[@class="b-profile__sections__count g-semibold"])[1]'));
-        //const PicCountN = await PicCount.getText();
-        const VideoCount = await driver.findElement(By.xpath('(//div[@class="profile-stat"])[3]'));
-        const VideoCountN = await VideoCount.getText();
         const LikeCount = await driver.findElement(By.xpath('(//div[@class="profile-stat"])[1]'));
         const LikeCountN = await LikeCount.getText();
         const FanCount = await driver.findElement(By.xpath('(//div[@class="profile-stat"])[2]'));
         const FanCountN = await FanCount.getText();
+        const PicCount = await driver.findElement(By.xpath('(//div[@class="profile-stat"])[3]'));
+        const PicCountN = await PicCount.getText();
+        const VideoCount = await driver.findElement(By.xpath('(//div[@class="profile-stat"])[4]'));
+        const VideoCountN = await VideoCount.getText();
 
-        const Price = await driver.findElement(By.xpath('(//app-balance-display)'));
-        const PriceN = (await Price.getText()).match(/\d+.\d+/)[0];
-        const DiscountN = PriceN;
+        const Prices = await driver.findElements(By.xpath('(//app-balance-display)'));
+        const PricesN = [];
+        const TierNames = [];
+        for (const Price of Prices) {
+            const index = Prices.indexOf(Price);
+            PriceN[index] = (await Price.getText()).match(/\d+.\d+/)[0];
+            const TierNameE = await driver.findElement(By.xpath('(//span[@class="eclipse margin-right-text"])['+(index+1)+']'));
+            TierNames[index] = await TierNameE.getText();
+        }
+
+        const DiscountN = PriceN[1];
 
         // Extract the metrics
-        const metrics = {
+        var metrics = {
             "followers_count": parseInt(FanCountN),
             "following_count": 0,
-            "picture_count": 0,//parseInt(PicCountN),
+            "picture_count": parseInt(PicCountN),
             "video_count": parseInt(VideoCountN),
             "like_count": parseInt(LikeCountN),
-            "price": parseFloat(PriceN),
+            "price": parseFloat(PriceN[1]),
             "discount": parseFloat(DiscountN)
         };
+
+        for (const PriceN of PricesN) {
+            const index = PricesN.indexOf(PriceN);
+            metrics['price_'+TierNames[index].replaceAll(' ', '-')] = parseFloat(PriceN);
+        }
 
         // Write the metrics to the environment file
         fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
