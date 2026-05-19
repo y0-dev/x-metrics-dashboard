@@ -38,9 +38,7 @@ describe('scrape', async function () {
         const TierNames = [];
         for (const Price of Prices) {
             const index = Prices.indexOf(Price);
-            console.log(Price);
-            console.log(await Price.getText());
-            PricesN[index] = (await Price.getText()).match(/\d+.\d+/)[0];
+            PricesN[index] = (await Price.getText()).match(/\d+.*\d*/)[0];
             const TierNameE = await driver.findElement(By.xpath('(//span[@class="eclipse margin-right-text"])['+(index+1)+']'));
             TierNames[index] = await TierNameE.getText();
         }
