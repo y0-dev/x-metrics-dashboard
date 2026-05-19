@@ -52,7 +52,7 @@ describe('scrape', async function () {
             "picture_count": parseInt(PicCountN),
             "video_count": parseInt(VideoCountN),
             "like_count": parseInt(LikeCountN),
-            "price": parseFloat(PriceN[1]),
+            "price": parseFloat(PricesN[1]),
             "discount": parseFloat(DiscountN)
         };
 
