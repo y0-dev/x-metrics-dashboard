@@ -6,6 +6,10 @@ describe('scrape', async function () {
     this.timeout(20000);
     let driver;
 
+    if (!fs.existsSync('./screenshots')) {
+        fs.mkdirSync('./screenshots');
+    }
+
     const scrape = async () => {
         await driver.get('https://fansly.com/'+process.env.USERNAME+'/posts');
 
@@ -24,6 +28,7 @@ describe('scrape', async function () {
         //    throw new Error('Cloudflare: You are not human');
         //else throw new Error(source);
 
+        try {
         const LikeCount = await driver.findElement(By.xpath('(//div[@class="profile-stat"])[1]'));
         const LikeCountN = await LikeCount.getText();
         const FanCount = await driver.findElement(By.xpath('(//div[@class="profile-stat"])[2]'));
@@ -65,6 +70,15 @@ describe('scrape', async function () {
         fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
 
         return FanCountN;
+        } catch (e) {
+            const filename = "test"
+                .replace(/['"]+/g, '')
+                .replace(/[^a-z0-9]/gi, '_')
+                .toLowerCase();
+            const encodedString = await driver.takeScreenshot();
+            await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
+            throw new Error(e);
+        }
     };
 
     // Make sure the BROWSER env variable is set
