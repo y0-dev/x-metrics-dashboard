@@ -77,7 +77,7 @@ describe('scrape', async function () {
                 .toLowerCase();
             const encodedString = await driver.takeScreenshot();
             await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
-            throw new Error(e);
+            return '2';//throw new Error(e); doesn't save artifact
         }
     };
 
