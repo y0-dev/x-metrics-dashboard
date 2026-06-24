@@ -52,7 +52,7 @@ jobs:
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
-          path: dashboard/
+          path: screenshots/
 
       - name: Save data
         run: node fansly_save_data.js
