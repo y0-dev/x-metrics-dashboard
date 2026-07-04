@@ -23,6 +23,10 @@ describe('scrape', async function () {
         var Enters = await driver.findElements(By.xpath('//div[@class="btn large solid-green flex-1"]'));
         if (Enters.length>0) Enters[0].click();
 
+        //Click Cookie choice
+        var Cookies = await driver.findElements(By.xpath('//div[@class="btn outline-dark-blue medium"]'));
+        if (Cookies.length>0) Cookies[0].click();
+
         //const source = await driver.getPageSource();
         //if (source.includes('you are human'))
         //    throw new Error('Cloudflare: You are not human');
@@ -43,7 +47,7 @@ describe('scrape', async function () {
         const TierNames = [];
         for (const Price of Prices) {
             const index = Prices.indexOf(Price);
-            PricesN[index] = (await Price.getText()).match(/\d+.*\d*/)[0];
+            PricesN[index] = (await Price.getText()).match(/\d+.*\d*/)[0];//TODO StaleElementReferenceError: stale element reference: stale element not found in the current frame
             const TierNameE = await driver.findElement(By.xpath('(//span[@class="eclipse margin-right-text"])['+(index+1)+']'));
             TierNames[index] = await TierNameE.getText();
         }
