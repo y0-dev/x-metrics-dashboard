@@ -75,6 +75,7 @@ describe('scrape', async function () {
 
         return FanCountN;
         } catch (e) {
+            console.log(e);
             const filename = "test"
                 .replace(/['"]+/g, '')
                 .replace(/[^a-z0-9]/gi, '_')
