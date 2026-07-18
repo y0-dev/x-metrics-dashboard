@@ -47,9 +47,10 @@ describe('scrape', async function () {
         const TierNames = [];
         for (const Price of Prices) {
             const index = Prices.indexOf(Price);
-            PricesN[index] = (await Price.getText()).match(/\d+.*\d*/)[0];//TODO StaleElementReferenceError: stale element reference: stale element not found in the current frame
-            const TierNameE = await driver.findElement(By.xpath('(//span[@class="eclipse margin-right-text"])['+(index+1)+']'));
+            PricesN[index] = (await Price.getText()).match(/\d+.*\d*/)[0];
+            const TierNameE = await driver.findElement(By.xpath('(//span[@class="eclipse margin-right-text"])['+(index+1)+']'));//TODO StaleElementReferenceError: stale element reference: stale element not found in the current frame
             TierNames[index] = await TierNameE.getText();
+            console.log('subscription '+TierNames[index]+' at $'+PricesN[index]);
         }
 
         const DiscountN = PricesN[1];
