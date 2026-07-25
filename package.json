@@ -6,7 +6,10 @@
   "scripts": {
     "of_fetch_data": "npx mocha of_fetch_data.mjs",
     "fansly_fetch_data": "npx mocha fansly_fetch_data.mjs",
-    "ig_fetch_data": "npx mocha ig_fetch_data.mjs"
+    "ig_fetch_data": "npx mocha ig_fetch_data.mjs",
+    "ig_fetch_data_windows": "(for /F \"tokens=*\" %i in (.env) do set %i) && npx mocha ig_fetch_data.mjs",
+    "reddit_fetch_data": "npx mocha reddit_fetch_data.mjs",
+    "reddit_fetch_data_windows": "(for /F \"tokens=*\" %i in (.env) do set %i) && npx mocha reddit_fetch_data.mjs"
   },
   "devDependencies": {
     "@rentready/flutter-selenium-bridge": "^1.0.5",
