@@ -12,9 +12,20 @@ describe('scrape', async function () {
 
     const scrape = async () => {
         await driver.get('https://www.reddit.com/user/'+process.env.USERNAME+'/');
+        await delay(2000);
 
         // Wait until the result page is loaded
-        await driver.wait(until.elementLocated(By.xpath('//div[@data-testid="profile-followers-widget"]')));
+        const loaded = await driver.wait(until.elementLocated(By.xpath('//div[@data-testid="profile-followers-widget"]')));
+        if (loaded != "ok") {
+            console.log(loaded);
+            const filename = "test"
+                .replace(/['"]+/g, '')
+                .replace(/[^a-z0-9]/gi, '_')
+                .toLowerCase();
+            const encodedString = await driver.takeScreenshot();
+            await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
+            return 2;
+        }
 
         const FollowerCount = await driver.findElement(By.xpath('//div[@data-testid="profile-followers-widget"]'));
         const FollowerCountN = (await FollowerCount.getText()).match(/\d+.\d+/)[0];

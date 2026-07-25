@@ -46,6 +46,12 @@ jobs:
           BROWSER: ${{ github.event.inputs.browser || 'chrome' }}
           USERNAME: ${{ secrets.REDDIT_USERNAME }}
 
+      - name: Upload artifacts
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          path: screenshots/
+
       - name: Save data
         run: node reddit_save_data.js
         env:
