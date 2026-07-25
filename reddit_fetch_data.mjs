@@ -14,17 +14,8 @@ describe('scrape', async function () {
         await driver.get('https://www.reddit.com/user/'+process.env.USERNAME+'/');
 
         // Wait until the result page is loaded
+        try {
         const loaded = await driver.wait(until.elementLocated(By.xpath('//div[@data-testid="profile-followers-widget"]')), 2000);
-        if (loaded != "ok") {
-            console.log(loaded);
-            const filename = "test"
-                .replace(/['"]+/g, '')
-                .replace(/[^a-z0-9]/gi, '_')
-                .toLowerCase();
-            const encodedString = await driver.takeScreenshot();
-            await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
-            return 2;
-        }
 
         const FollowerCount = await driver.findElement(By.xpath('//div[@data-testid="profile-followers-widget"]'));
         const FollowerCountN = (await FollowerCount.getText()).match(/\d+.\d+/)[0];
@@ -42,6 +33,16 @@ describe('scrape', async function () {
         fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
 
         return FollowerCountN;
+        } catch (e) {
+            console.log(e);
+            const filename = "test"
+                .replace(/['"]+/g, '')
+                .replace(/[^a-z0-9]/gi, '_')
+                .toLowerCase();
+            const encodedString = await driver.takeScreenshot();
+            await fs.writeFileSync(`./screenshots/${filename}.png`, encodedString, 'base64');
+            return 2;
+        }
     };
 
     // Make sure the BROWSER env variable is set
