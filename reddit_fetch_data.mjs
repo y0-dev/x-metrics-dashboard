@@ -12,7 +12,6 @@ describe('scrape', async function () {
 
     const scrape = async () => {
         await driver.get('https://www.reddit.com/user/'+process.env.USERNAME+'/');
-        await delay(2000);
 
         // Wait until the result page is loaded
         const loaded = await driver.wait(until.elementLocated(By.xpath('//div[@data-testid="profile-followers-widget"]')));
