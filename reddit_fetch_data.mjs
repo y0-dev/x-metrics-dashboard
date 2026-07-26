@@ -18,15 +18,17 @@ describe('scrape', async function () {
             const Blockeds = await driver.findElements(By.xpath('//*[contains(., "blocked by network security")]'));
             if (Blockeds.length>0) {
                 console.log('blocked by network security');
-                const LogIn = await driver.findElement(By.xpath('//*[contains(., "Log in")]'));
+                const LogIn = await driver.findElement(By.xpath('//a[contains(., "Log in")]'));
                 LogIn.click();
-                await driver.wait(until.elementLocated(By.id('login-username')));
+                console.log('login in');
+                await driver.wait(until.elementLocated(By.id('login-username')), 2000);
 
                 const Username = await driver.findElement(By.id('login-username'));
                 await Username.sendKeys(process.env.USERNAME+'_bot');
                 const Password = await driver.findElement(By.id('login-password'));
                 await Password.sendKeys(process.env.PASSWORD);
                 await Password.sendKeys(Key.ENTER);
+                console.log('logged in');
             }
 
         const loaded = await driver.wait(until.elementLocated(By.xpath('//div[@data-testid="profile-followers-widget"]')), 2000);
