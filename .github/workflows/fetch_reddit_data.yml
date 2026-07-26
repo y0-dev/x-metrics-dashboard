@@ -45,6 +45,7 @@ jobs:
         env:
           BROWSER: ${{ github.event.inputs.browser || 'chrome' }}
           USERNAME: ${{ secrets.REDDIT_USERNAME }}
+          PASSWORD: ${{ secrets.REDDIT_PASSWORD }}
 
       - name: Upload artifacts
         if: ${{ always() }}

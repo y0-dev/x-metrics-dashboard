@@ -1,4 +1,4 @@
-import { Builder, By, until } from 'selenium-webdriver';
+import {Builder, By, Key, until} from 'selenium-webdriver';
 import { assert } from 'chai';
 import * as fs from 'fs';
 
@@ -15,6 +15,19 @@ describe('scrape', async function () {
 
         // Wait until the result page is loaded
         try {
+            const source = await driver.getPageSource();
+            if (source.includes('blocked by network security')) {
+                const LogIn = await driver.findElement(By.xpath('//a[contains(., "Log in")]'));
+                LogIn.click();
+                await driver.wait(until.elementLocated(By.id('login-username')), 2000);
+
+                const Username = await driver.findElement(By.id('login-username'));
+                await Username.sendKeys(process.env.USERNAME+'_bot');
+                const Password = await driver.findElement(By.id('login-password'));
+                await Password.sendKeys(process.env.PASSWORD);
+                await Password.sendKeys(Key.ENTER);
+            }
+
         const loaded = await driver.wait(until.elementLocated(By.xpath('//div[@data-testid="profile-followers-widget"]')), 2000);
 
         const FollowerCount = await driver.findElement(By.xpath('//div[@data-testid="profile-followers-widget"]'));
