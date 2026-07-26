@@ -22,14 +22,15 @@ describe('scrape', async function () {
                 LogIn.click();
                 console.log('login in');
                 await driver.wait(until.elementLocated(By.id('login-username')), 2000);
-                var Usernames = await driver.findElements(By.id('login-username'));
-                console.log('usernames: '+Usernames.length);
 
                 const Username = await driver.findElement(By.id('login-username'));
                 await Username.sendKeys(process.env.USERNAME+'_bot');
                 const Password = await driver.findElement(By.id('login-password'));
                 await Password.sendKeys(process.env.PASSWORD);
-                await Password.sendKeys(Key.ENTER);
+
+                //await Password.sendKeys(Key.ENTER);
+                const LogInBtn = await driver.findElement(By.xpath('//button[contains(., "Log In")]'));
+                LogInBtn.click();
                 console.log('logged in');
             }
 
