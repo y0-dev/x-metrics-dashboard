@@ -28,9 +28,10 @@ describe('scrape', async function () {
                 const Password = await driver.findElement(By.id('login-password'));
                 await Password.sendKeys(process.env.PASSWORD);
 
+                await driver.sleep(2 * 1000);
                 //await Password.sendKeys(Key.ENTER);
                 const LogInBtn = await driver.findElement(By.xpath('//button[contains(., "Log In")]'));
-                LogInBtn.click();
+                LogInBtn.click();//TODO request blocked
                 console.log('logged in');
             }
 
