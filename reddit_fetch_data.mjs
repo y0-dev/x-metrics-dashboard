@@ -18,12 +18,12 @@ describe('scrape', async function () {
             const Blockeds = await driver.findElements(By.xpath('//*[contains(., "blocked by network security")]'));
             if (Blockeds.length>0) {
                 console.log('blocked by network security');
-                var LogIns = await driver.findElements(By.xpath('//a[contains(., "Log in")]'));
-                console.log('logins: '+LogIns.length);
                 const LogIn = await driver.findElement(By.xpath('//a[contains(., "Log in")]'));
                 LogIn.click();
                 console.log('login in');
                 await driver.wait(until.elementLocated(By.id('login-username')), 2000);
+                var Usernames = await driver.findElements(By.id('login-username'));
+                console.log('usernames: '+Usernames.length);
 
                 const Username = await driver.findElement(By.id('login-username'));
                 await Username.sendKeys(process.env.USERNAME+'_bot');
