@@ -15,8 +15,9 @@ describe('scrape', async function () {
 
         // Wait until the result page is loaded
         try {
-            const source = await driver.getPageSource();
-            if (source.includes('blocked by network security')) {
+            const Blockeds = await driver.findElements(By.xpath('//*[contains(., "blocked by network security")]'));
+            if (Blockeds.length>0) {
+                console.log('blocked by network security');
                 const LogIn = await driver.findElement(By.xpath('//a[contains(., "Log in")]'));
                 LogIn.click();
                 await driver.wait(until.elementLocated(By.id('login-username')), 2000);
