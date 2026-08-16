@@ -4,17 +4,7 @@ on:
   schedule:
     # Runs at 4 AM UTC (5 AM in Poland during Standard Time)
     - cron: '0 4 * * *'
-  workflow_dispatch:
-    inputs:
-      browser:
-        type: choice
-        description: Which browser to test
-        required: true
-        options:
-          - chrome
-          - firefox
-          - edge
-        default: 'chrome'
+  workflow_dispatch: # This line enables manual triggering of the action
 
 jobs:
   fetch_data:
@@ -24,34 +14,26 @@ jobs:
       contents: write
       pull-requests: write
 
-    container:
-      image: node:23
-
-    services:
-      selenium:
-        image: selenium/standalone-${{ github.event.inputs.browser || 'chrome' }}
-        options: --shm-size=2gb
-
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '23'
-          cache: 'npm'
-      - run: npm ci
+      - name: Check out the repository
+        uses: actions/checkout@v4
 
-      - id: fetch_data
-        run: npm run reddit_fetch_data
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Fetch Data from Platform Reddit
+        id: fetch_data
+        run: node reddit_fetch_data.js
         env:
-          BROWSER: ${{ github.event.inputs.browser || 'chrome' }}
-          USERNAME: ${{ secrets.REDDIT_USERNAME }}
-          PASSWORD: ${{ secrets.REDDIT_PASSWORD }}
-
-      - name: Upload artifacts
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
-        with:
-          path: screenshots/
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+          REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
+          REDDIT_PASSWORD: ${{ secrets.REDDIT_PASSWORD }}
 
       - name: Save data
         run: node reddit_save_data.js
@@ -60,10 +42,8 @@ jobs:
 
       - name: Commit and push if there's changes
         run: |
-          git config --global --add safe.directory /__w/x-metrics-dashboard/x-metrics-dashboard
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
-          git pull
           git add data/reddit.json
           git commit -m "Update data for Platform Reddit" || exit 0  # exit 0 if no changes
           git push

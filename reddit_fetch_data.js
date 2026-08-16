@@ -73,4 +73,60 @@ const fetchRedditFollowerCount = async () => {
   fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
 };
 
-fetchRedditFollowerCount().catch(err => console.error(err));
+const fetchRedditPostsCountAPI = async () => {
+	const response = await fetch(
+		'https://reddit-scraper13.p.rapidapi.com/user_posts_v3?user='+process.env.USERNAME//100calls/month
+		, {
+			headers: {
+				'x-rapidapi-key': process.env.API_KEY,
+				'x-rapidapi-host': 'reddit-scraper13.p.rapidapi.com',
+				'Content-Type': 'application/json'
+			}
+		});
+
+	if (!response.ok) {
+		console.log(await response.text());
+		throw new Error(`HTTP error! status: ${response.status} for ${response.url}`);
+	}
+
+	const data = await response.json();
+	if (data.error) {
+		throw new Error(`HTTP error! status: ${data.status} message: ${data.message}`);
+	} else if (data.data?.pageInfo.hasNextPage) {
+		throw new Error(`Too many posts, use nextPageCursor to retrieve next page`);
+	}
+
+	// Extract the metrics
+	const metrics = data?.data?.length;
+
+	return metrics;
+};
+
+const fetchRedditRapidAPI = async () => {
+	const response = await fetch(
+		'https://reddit-scraper13.p.rapidapi.com/user_info_v3?user='+process.env.USERNAME//100calls/month
+		, {
+			headers: {
+				'x-rapidapi-key': process.env.API_KEY,
+				'x-rapidapi-host': 'reddit-scraper13.p.rapidapi.com',
+				'Content-Type': 'application/json'
+			}
+		});
+
+	if (!response.ok) {
+		throw new Error(`HTTP error! status: ${response.status}`);
+	}
+
+	const data = await response.json();
+	if (data.error) {
+		throw new Error(`HTTP error! status: ${data.status} message: ${data.message}`);
+	}
+
+	// Extract the metrics
+	const metrics = {subscribers: data?.subscribers, posts_count: await fetchRedditPostsCountAPI()};
+
+	// Write the metrics to the environment file
+	fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
+};
+
+fetchRedditRapidAPI().catch(err => console.error(err));
