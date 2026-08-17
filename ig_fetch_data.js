@@ -37,6 +37,9 @@ const fetchIGFollowerCount = async () => {
   if (data.error) {
       throw new Error(`HTTP error! status: ${data.status} message: ${data.message}`);
   }
+    if (!data.followers) {
+        throw new Error(`API error: empty followers`);
+    }
 
     // Extract the metrics
     const metrics = {
