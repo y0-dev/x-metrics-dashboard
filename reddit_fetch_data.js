@@ -73,7 +73,7 @@ const fetchRedditFollowerCount = async () => {
 
 const fetchRedditPostsCountAPI = async () => {
 	const response = await fetch(
-		'https://reddit-scraper13.p.rapidapi.com/user_posts_v3?user='+process.env.USERNAME//100calls/month
+		'https://reddit-scraper13.p.rapidapi.com/user_posts_v3?user='+process.env.REDDIT_USERNAME//100calls/month
 		, {
 			headers: {
 				'x-rapidapi-key': process.env.API_KEY,
@@ -88,7 +88,6 @@ const fetchRedditPostsCountAPI = async () => {
 	}
 
 	const data = await response.json();
-	console.log(data);
 	if (data.error) {
 		throw new Error(`HTTP error! status: ${data.status} message: ${data.message}`);
 	} else if (data.pageInfo.hasNextPage) {
@@ -101,7 +100,7 @@ const fetchRedditPostsCountAPI = async () => {
 
 const fetchRedditRapidAPI = async () => {
 	const response = await fetch(
-		'https://reddit-scraper13.p.rapidapi.com/user_info_v3?user='+process.env.USERNAME//100calls/month
+		'https://reddit-scraper13.p.rapidapi.com/user_info_v3?user='+process.env.REDDIT_USERNAME//100calls/month
 		, {
 			headers: {
 				'x-rapidapi-key': process.env.API_KEY,
@@ -118,7 +117,6 @@ const fetchRedditRapidAPI = async () => {
 	if (data.error) {
 		throw new Error(`HTTP error! status: ${data.status} message: ${data.message}`);
 	}
-	console.log(data);
 
 	// Extract the metrics
 	const metrics = {subscribers: data.subscribers, posts_count: await fetchRedditPostsCountAPI()};
