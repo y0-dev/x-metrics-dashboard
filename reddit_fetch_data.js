@@ -119,7 +119,7 @@ const fetchRedditRapidAPI = async () => {
 	}
 
 	// Extract the metrics
-	const metrics = {subscribers: data.subscribers, posts_count: await fetchRedditPostsCountAPI()};
+	const metrics = {subscribers: data.data.subscribers, posts_count: await fetchRedditPostsCountAPI()};
 
 	// Write the metrics to the environment file
 	fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
