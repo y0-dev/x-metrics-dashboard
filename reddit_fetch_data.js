@@ -45,9 +45,7 @@ const fetchRedditPostsCount = async (token) => {
 	//console.log(data);
 
 	// Extract the metrics
-	const metrics = data?.data?.children.length;
-
-	return metrics;
+	return data?.data?.children.length;
 };
 
 const fetchRedditFollowerCount = async () => {
@@ -97,9 +95,7 @@ const fetchRedditPostsCountAPI = async () => {
 	}
 
 	// Extract the metrics
-	const metrics = data?.data?.length;
-
-	return metrics;
+	return data.data?.length;
 };
 
 const fetchRedditRapidAPI = async () => {
@@ -123,10 +119,13 @@ const fetchRedditRapidAPI = async () => {
 	}
 
 	// Extract the metrics
-	const metrics = {subscribers: data?.subscribers, posts_count: await fetchRedditPostsCountAPI()};
+	const metrics = {subscribers: data.subscribers, posts_count: await fetchRedditPostsCountAPI()};
 
 	// Write the metrics to the environment file
 	fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
 };
 
-fetchRedditRapidAPI().catch(err => console.error(err));
+fetchRedditRapidAPI().catch(err => {
+	console.log(err);
+	fetchRedditRapidAPI();//try again
+});
