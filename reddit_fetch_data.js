@@ -88,6 +88,7 @@ const fetchRedditPostsCountAPI = async () => {
 	}
 
 	const data = await response.json();
+	console.log(data);
 	if (data.error) {
 		throw new Error(`HTTP error! status: ${data.status} message: ${data.message}`);
 	} else if (data.pageInfo.hasNextPage) {
@@ -117,6 +118,7 @@ const fetchRedditRapidAPI = async () => {
 	if (data.error) {
 		throw new Error(`HTTP error! status: ${data.status} message: ${data.message}`);
 	}
+	console.log(data);
 
 	// Extract the metrics
 	const metrics = {subscribers: data.subscribers, posts_count: await fetchRedditPostsCountAPI()};
