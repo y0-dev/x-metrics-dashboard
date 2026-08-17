@@ -92,7 +92,7 @@ const fetchRedditPostsCountAPI = async () => {
 	const data = await response.json();
 	if (data.error) {
 		throw new Error(`HTTP error! status: ${data.status} message: ${data.message}`);
-	} else if (data.data?.pageInfo.hasNextPage) {
+	} else if (data.pageInfo.hasNextPage) {
 		throw new Error(`Too many posts, use nextPageCursor to retrieve next page`);
 	}
 
