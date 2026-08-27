@@ -2768,5 +2768,17 @@
     "discount": 7.99,
     "price_Solo": 5,
     "price_Premium": 7.99
+  },
+  {
+    "date": "2026-08-27",
+    "followers_count": 267,
+    "following_count": 0,
+    "picture_count": 5,
+    "video_count": 17,
+    "like_count": 316,
+    "price": 7.99,
+    "discount": 7.99,
+    "price_Solo": 5,
+    "price_Premium": 7.99
   }
 ]
