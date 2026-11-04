@@ -3490,6 +3490,42 @@
     "price_Premium": 7.99
   },
   {
+    "date": "2026-10-26",
+    "followers_count": 495,
+    "following_count": 0,
+    "picture_count": 5,
+    "video_count": 19,
+    "like_count": 629,
+    "price": 7.99,
+    "discount": 7.99,
+    "price_Solo": 5,
+    "price_Premium": 7.99
+  },
+  {
+    "date": "2026-10-27",
+    "followers_count": 496,
+    "following_count": 0,
+    "picture_count": 5,
+    "video_count": 19,
+    "like_count": 629,
+    "price": 7.99,
+    "discount": 7.99,
+    "price_Solo": 5,
+    "price_Premium": 7.99
+  },
+  {
+    "date": "2026-10-28",
+    "followers_count": 497,
+    "following_count": 0,
+    "picture_count": 5,
+    "video_count": 19,
+    "like_count": 630,
+    "price": 7.99,
+    "discount": 7.99,
+    "price_Solo": 5,
+    "price_Premium": 7.99
+  },
+  {
     "date": "2026-10-29",
     "followers_count": 498,
     "following_count": 0,
@@ -3544,6 +3580,30 @@
     "picture_count": 5,
     "video_count": 19,
     "like_count": 633,
+    "price": 7.99,
+    "discount": 7.99,
+    "price_Solo": 5,
+    "price_Premium": 7.99
+  },
+  {
+    "date": "2026-11-03",
+    "followers_count": 510,
+    "following_count": 0,
+    "picture_count": 5,
+    "video_count": 19,
+    "like_count": 634,
+    "price": 7.99,
+    "discount": 7.99,
+    "price_Solo": 5,
+    "price_Premium": 7.99
+  },
+  {
+    "date": "2026-11-04",
+    "followers_count": 513,
+    "following_count": 0,
+    "picture_count": 5,
+    "video_count": 19,
+    "like_count": 650,
     "price": 7.99,
     "discount": 7.99,
     "price_Solo": 5,

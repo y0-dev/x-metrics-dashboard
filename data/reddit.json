@@ -2875,6 +2875,11 @@
     "posts_count": 5
   },
   {
+    "date": "2026-10-13",
+    "subscribers": 101,
+    "posts_count": 5
+  },
+  {
     "date": "2026-10-14",
     "subscribers": 101,
     "posts_count": 5
@@ -2890,36 +2895,98 @@
     "posts_count": 5
   },
   {
+    "date": "2026-10-17",
+    "subscribers": 101,
+    "posts_count": 5
+  },
+  {
+    "date": "2026-10-18",
+    "subscribers": 101,
+    "posts_count": 5
+  },
+  {
+    "date": "2026-10-19",
+    "subscribers": 101,
+    "posts_count": 5
+  },
+  {
+    "date": "2026-10-20",
+    "subscribers": 101,
+    "posts_count": 5
+  },
+  {
+    "date": "2026-10-21",
+    "subscribers": 101,
+    "posts_count": 5
+  },
+  {
+    "date": "2026-10-22",
+    "subscribers": 101,
+    "posts_count": 5
+  },
+  {
+    "date": "2026-10-23",
+    "subscribers": 101,
+    "posts_count": 5
+  },
+  {
     "date": "2026-10-24",
     "subscribers": 101,
     "posts_count": 5
   },
   {
     "date": "2026-10-25",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 5
+  },
+  {
+    "date": "2026-10-26",
+    "subscribers": 101,
+    "posts_count": 5
+  },
+  {
+    "date": "2026-10-27",
+    "subscribers": 101,
+    "posts_count": 5
+  },
+  {
+    "date": "2026-10-28",
+    "subscribers": 101,
+    "posts_count": 5
+  },
+  {
+    "date": "2026-10-29",
+    "subscribers": 101,
+    "posts_count": 5
   },
   {
     "date": "2026-10-30",
-    "subscribers": 0
+    "subscribers": 101,
+    "posts_count": 5
   },
   {
     "date": "2026-10-31",
-    "subscribers": 0
+    "subscribers": 101,
+    "posts_count": 5
   },
   {
     "date": "2026-11-01",
-    "subscribers": 0
+    "subscribers": 101,
+    "posts_count": 5
   },
   {
     "date": "2026-11-02",
-    "subscribers": 0
+    "subscribers": 101,
+    "posts_count": 5
   },
   {
     "date": "2026-11-03",
-    "subscribers": 0
+    "subscribers": 101,
+    "posts_count": 5
   },
   {
     "date": "2026-11-04",
-    "subscribers": 0
+    "subscribers": 0,
+    "posts_count": 5
   }
 ]
