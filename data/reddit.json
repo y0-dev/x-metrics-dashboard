@@ -2991,18 +2991,22 @@
   },
   {
     "date": "2026-11-05",
-    "subscribers": 0
+    "subscribers": 101,
+    "posts_count": 5
   },
   {
     "date": "2026-11-06",
-    "subscribers": 0
+    "subscribers": 101,
+    "posts_count": 5
   },
   {
     "date": "2026-11-07",
-    "subscribers": 0
+    "subscribers": 101,
+    "posts_count": 5
   },
   {
     "date": "2026-11-08",
-    "subscribers": 0
+    "subscribers": 101,
+    "posts_count": 5
   }
 ]

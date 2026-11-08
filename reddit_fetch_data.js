@@ -6,108 +6,8 @@ const REDDIT_PASSWORD = process.env.REDDIT_PASSWORD;
 const client_id = process.env.REDDIT_CLIENT_ID;
 const client_secret = process.env.REDDIT_CLIENT_SECRET;
 
-const getToken = async () => {
-	const response = await fetch('https://www.reddit.com/api/v1/access_token', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded',
-					'Authorization': 'Basic ' + btoa(client_id+':'+client_secret)
-				},
-				body: new URLSearchParams({
-					grant_type: 'password',
-					username: REDDIT_USERNAME,
-					password: REDDIT_PASSWORD,
-					scope: 'identity,history'
-				})
-			});
-	const data = await response.json();
-	if(data.access_token) {
-		return data.access_token;
-	} else
-		throw new Error(`access_token error!` + data.error);
-};
-
-//https://www.reddit.com/dev/api/#GET_user_{username}_submitted
-const fetchRedditPostsCount = async (token) => {
-	const response = await fetch('https://oauth.reddit.com/user/'+REDDIT_USERNAME+'/submitted/new.json', {
-		headers: {
-			//"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36",
-			'Authorization': `Bearer ${token}`,
-		},
-	});
-
-	if (!response.ok) {
-		console.log(await response.text());
-		throw new Error(`HTTP error! status: ${response.status} for ${response.url}`);
-	}
-
-	const data = await response.json();
-	//console.log(data);
-
-	// Extract the metrics
-	return data?.data?.children.length;
-};
-
-const fetchRedditFollowerCount = async () => {
-	let token = await getToken();
-  const response = await fetch('https://oauth.reddit.com/api/v1/me', {
-    method: 'GET',
-    headers: {
-      'Authorization': `Bearer ${token}`,
-    }
-  });
-
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-
-  const data = await response.json();
-  //console.log(data);
-
-  // Extract the metrics
-  const metrics = {subscribers: data?.subreddit?.subscribers, posts_count: await fetchRedditPostsCount(token)};
-
-  // Write the metrics to the environment file
-  fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
-};
-
-const fetchRedditPostsCountAPI = async () => {
-	const response = await fetch(
-		'https://reddit-scraper13.p.rapidapi.com/user_posts_v3?user='+process.env.REDDIT_USERNAME//100calls/month
-		, {
-			headers: {
-				'x-rapidapi-key': process.env.API_KEY,
-				'x-rapidapi-host': 'reddit-scraper13.p.rapidapi.com',
-				'Content-Type': 'application/json'
-			}
-		});
-
-	if (!response.ok) {
-		console.log(await response.text());
-		throw new Error(`HTTP error! status: ${response.status} for ${response.url}`);
-	}
-
-	const data = await response.json();
-	if (data.error) {
-		throw new Error(`HTTP error! status: ${data.status} message: ${data.message}`);
-	} else if (data.pageInfo.hasNextPage) {
-		throw new Error(`Too many posts, use nextPageCursor to retrieve next page`);
-	}
-
-	// Extract the metrics
-	return data.data?.length;
-};
-
-const fetchRedditRapidAPI = async () => {
-	const response = await fetch(
-		'https://reddit-scraper13.p.rapidapi.com/user_info_v3?user='+process.env.REDDIT_USERNAME//100calls/month
-		, {
-			headers: {
-				'x-rapidapi-key': process.env.API_KEY,
-				'x-rapidapi-host': 'reddit-scraper13.p.rapidapi.com',
-				'Content-Type': 'application/json'
-			}
-		});
+const fetchReddit = async () => {
+	const response = await fetch('https://www.reddit.com/r/u_'+process.env.REDDIT_USERNAME+'/about.json');
 
 	if (!response.ok) {
 		throw new Error(`HTTP error! status: ${response.status}`);
@@ -119,13 +19,13 @@ const fetchRedditRapidAPI = async () => {
 	}
 
 	// Extract the metrics
-	const metrics = {subscribers: data.data.subscribers, posts_count: await fetchRedditPostsCountAPI()};
+	const metrics = {subscribers: data.data.subscribers, posts_count: 5};
 
 	// Write the metrics to the environment file
 	fs.appendFileSync(process.env.GITHUB_OUTPUT, `METRICS=${JSON.stringify(metrics)}\n`);
 };
 
-fetchRedditRapidAPI().catch(err => {
+fetchReddit().catch(err => {
 	console.log(err);
-	fetchRedditRapidAPI();//try again
+	fetchReddit();//try again
 });
